@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/fashionApp.iml" filepath="$PROJECT_DIR$/.idea/fashionApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/giant-leap/giantleap.iml" filepath="$PROJECT_DIR$/giant-leap/giantleap.iml" />
+    </modules>
+  </component>
+</project>
