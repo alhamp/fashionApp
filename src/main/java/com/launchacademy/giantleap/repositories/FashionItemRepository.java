@@ -1,5 +1,7 @@
 package com.launchacademy.giantleap.repositories;
 
-public class FashionItemRepository {
+import com.launchacademy.giantleap.models.FashionItem;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
+public interface FashionItemRepository extends PagingAndSortingRepository<FashionItem, Integer> {
 }
