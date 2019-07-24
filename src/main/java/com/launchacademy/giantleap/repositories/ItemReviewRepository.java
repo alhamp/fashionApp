@@ -1,8 +1,8 @@
 package com.launchacademy.giantleap.repositories;
 
-import com.launchacademy.giantleap.models.ItemReview;
+import com.launchacademy.giantleap.models.FashionItemReview;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface ItemReviewRepository extends PagingAndSortingRepository<ItemReview, Integer> {
+public interface ItemReviewRepository extends PagingAndSortingRepository<FashionItemReview, Integer> {
 }
 

@@ -12,8 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ItemReview  {
-
+public class FashionItemReview {
     @Id
     @SequenceGenerator(name= "fashion_item_reviews_generator", sequenceName = "fashion_item_reviews_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fashion_item_reviews_generator")
@@ -43,4 +42,7 @@ public class ItemReview  {
     @URL
     @Column
     private String photo;
+
+    @Column
+    private Integer rating;
 }

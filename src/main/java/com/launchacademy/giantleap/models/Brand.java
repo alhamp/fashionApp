@@ -1,6 +1,5 @@
 package com.launchacademy.giantleap.models;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -24,13 +23,12 @@ import lombok.Setter;
 
 public class Brand {
   @Id
-  @SequenceGenerator(name= "brand_generator",
-      sequenceName = "brand_id_seq", allocationSize = 1)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE,
-      generator = "brand_generator")
+  @SequenceGenerator(name= "brand_generator", sequenceName = "brand_id_seq", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "brand_generator")
   @Column(name="id", nullable=false, unique=true)
   private Integer id;
   @NonNull
+
   @Column(nullable = false)
   private String name;
 

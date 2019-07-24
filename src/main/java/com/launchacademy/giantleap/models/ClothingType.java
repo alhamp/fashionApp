@@ -1,4 +1,5 @@
 package com.launchacademy.giantleap.models;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -26,6 +27,7 @@ public class ClothingType {
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "clothingtype_generator")
   @Column(name="id", nullable=false, unique=true)
   private Integer id;
+
   @NonNull
   @Column(nullable = false)
   private String name;

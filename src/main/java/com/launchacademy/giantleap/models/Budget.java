@@ -1,6 +1,5 @@
 package com.launchacademy.giantleap.models;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -25,10 +24,8 @@ import lombok.Setter;
 public class Budget {
 
   @Id
-  @SequenceGenerator(name = "budget_generator",
-      sequenceName = "budget_id_seq", allocationSize = 1)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE,
-      generator = "budget_generator")
+  @SequenceGenerator(name = "budget_generator", sequenceName = "budget_id_seq", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "budget_generator")
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
   @NonNull
