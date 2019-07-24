@@ -27,6 +27,7 @@ public class Budget {
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "budget_generator")
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
+
   @NonNull
   @Column(nullable = false)
   private Integer price;

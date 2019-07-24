@@ -1,7 +1,11 @@
 package com.launchacademy.giantleap.controllers;
 
-import java.awt.print.Pageable;
+import com.launchacademy.giantleap.models.FashionItem;
+import com.launchacademy.giantleap.models.FashionItemReview;
+import com.launchacademy.giantleap.repositories.ItemReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,12 +22,12 @@ public class ItemReviewRestController {
   }
 
   @GetMapping("api/v1/reviews/{id}")
-  public Page<ItemReview> getFashionItems(@ModelAttribute FashionItem fashionItem){ //Model Attribute or Request body?
-    return itemReviewRepository.findAllByFashionItem(fashionItem);
+  public Page<FashionItemReview> getFashionItems(@ModelAttribute FashionItem fashionItem, Pageable pageable){
+    return itemReviewRepository.findAllByFashionItem(fashionItem, pageable);
   }
 
-  @PostMapping("api/v1/reviews/{id}") //id in mapping or in hidden field?
-  public ItemReview addReview(@RequestBody ItemReview itemReview){
+  @PostMapping("api/v1/reviews/")
+  public FashionItemReview addReview(@RequestBody FashionItemReview itemReview){
     return itemReviewRepository.save(itemReview);
   }
 }

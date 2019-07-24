@@ -1,8 +1,11 @@
 package com.launchacademy.giantleap.controllers;
 
-import java.awt.print.Pageable;
+import com.launchacademy.giantleap.models.FashionItem;
+import com.launchacademy.giantleap.repositories.FashionItemRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,7 +25,7 @@ public class FashionItemRestController {
 
   @Autowired
   public FashionItemRestController(FashionItemRepository fashionItemRepository){
-    this.fashionItemRespository = fashionItemRepository;
+    this.fashionItemRepository = fashionItemRepository;
   }
 
   @GetMapping("api/v1/fashion")
@@ -45,10 +48,10 @@ public class FashionItemRestController {
 
   @GetMapping("/api/v1/fashion/{id}")
   public FashionItem getOneItem(@PathVariable Integer id) {
-    return fashionItemRespository.findById(id).orElseThrow(() -> new FashionItemNotFoundException());
+    return fashionItemRepository.findById(id).orElseThrow(() -> new FashionItemNotFoundException());
   }
   @PostMapping("api/v1/fashion")
   public FashionItem newFashionItem(@RequestBody FashionItem fashionItem, Model model){
-    return fashionItemRespository.save(fashionItem);
+    return fashionItemRepository.save(fashionItem);
   }
 }
