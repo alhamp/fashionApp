@@ -27,8 +27,8 @@ public class Brand {
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "brand_generator")
   @Column(name="id", nullable=false, unique=true)
   private Integer id;
-  @NonNull
 
+  @NonNull
   @Column(nullable = false)
   private String name;
 

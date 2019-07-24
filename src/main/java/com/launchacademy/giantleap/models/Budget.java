@@ -22,7 +22,6 @@ import lombok.Setter;
 @NoArgsConstructor
 
 public class Budget {
-
   @Id
   @SequenceGenerator(name = "budget_generator", sequenceName = "budget_id_seq", allocationSize = 1)
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "budget_generator")
