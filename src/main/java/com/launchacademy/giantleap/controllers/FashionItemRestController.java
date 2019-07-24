@@ -50,6 +50,7 @@ public class FashionItemRestController {
   public FashionItem getOneItem(@PathVariable Integer id) {
     return fashionItemRepository.findById(id).orElseThrow(() -> new FashionItemNotFoundException());
   }
+
   @PostMapping("api/v1/fashion")
   public FashionItem newFashionItem(@RequestBody FashionItem fashionItem, Model model){
     return fashionItemRepository.save(fashionItem);
