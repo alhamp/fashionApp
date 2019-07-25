@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body})}">
+
+<body>
+<h1>Add your fashion item here</h1>
+
+<form action="#" th:action="@{/}" th:object="${fashionItem}" method="POST">
+    <div>
+        <label th:for="name">Item name</label>
+        <input type="text" th:field="*{name}" />
+    </div>
+
+    <div>
+        <label th:for="clothingType">Clothing Type</label>
+        <select name="clothingType">
+            <option value="dress">Dress</option>
+            <option value="blazers">Blazers</option>
+            <option value="coats">Coats</option>
+            <option value="dresses">Dresses</option>
+            <option value="jumpsuits">Jumpsuits</option>
+            <option value="knitwear">Knitwear</option>
+            <option value="shirts|blouses">Shirts|Blouses</option>
+            <option value="tops">Tops</option>
+            <option value="t-shirts">T-Shirt</option>
+            <option value="pants">Pants</option>
+            <option value="jeans">Jeans</option>
+            <option value="shorts">Shorts</option>
+            <option value="skirts">Skirts</option>
+            <option value="swimwear">Swimwear</option>
+            <option value="shoes">shoes</option>
+        </select>
+    </div>
+
+    <div>
+        <input type="submit" value="SHARE YOUR ITEM" />
+    </div>
+</form>
+</body>
+</html>
+
