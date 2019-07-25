@@ -54,7 +54,7 @@ public class UsersController {
     return "security/login";
   }
 
-  @GetMapping({"/", "/welcome"})
+  @GetMapping({"/welcome"})
   public String welcome(Model model, Authentication authentication) {
     org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)authentication.getPrincipal();
     model.addAttribute("username", user.getUsername());
