@@ -1,8 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App'
+import ReactDom from 'react-dom';
+import List from './List'
+import Show from './Show'
 
-ReactDOM.render(
- <App/>,
- document.getElementById('app')
-);
+const pageMap = {
+  "list": List,
+  "show": Show
+}
+
+for(const domId in pageMap) {
+  if(document.getElementById(domId)) {
+    const Component = pageMap[domId]
+    ReactDom.render(<Component />,document.getElementById(domId))
+  }
+}
