@@ -1,41 +1,170 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org"
-      th:replace="~{fragments/layout :: layout (~{::body})}">
+<body xmlns:th="http://www.w3.org/1999/xhtml">
 
-<body>
 <h1>Add your fashion item here</h1>
-
-<form action="#" th:action="@{/}" th:object="${fashionItem}" method="POST">
+<form action="#" th:action="@{/fashion}" th:object="${fashionItem}" method="POST">
     <div>
-        <label th:for="name">Item name</label>
+        <label th:for="name">Item Name</label>
         <input type="text" th:field="*{name}" />
     </div>
-
+    </br>
+    <div>
+        <label th:for="brand">Brand</label>
+        <input type="text" th:field="*{brand}" />
+    </div>
+    </br>
     <div>
         <label th:for="clothingType">Clothing Type</label>
         <select name="clothingType">
-            <option value="dress">Dress</option>
+            <option value="">--Choose clothing type--</option>
+            <option value="tops">Tops</option>
+            <option value="jackets">Jackets</option>
             <option value="blazers">Blazers</option>
             <option value="coats">Coats</option>
             <option value="dresses">Dresses</option>
             <option value="jumpsuits">Jumpsuits</option>
             <option value="knitwear">Knitwear</option>
             <option value="shirts|blouses">Shirts|Blouses</option>
-            <option value="tops">Tops</option>
             <option value="t-shirts">T-Shirt</option>
             <option value="pants">Pants</option>
             <option value="jeans">Jeans</option>
             <option value="shorts">Shorts</option>
             <option value="skirts">Skirts</option>
             <option value="swimwear">Swimwear</option>
-            <option value="shoes">shoes</option>
         </select>
     </div>
-
+    </br>
     <div>
-        <input type="submit" value="SHARE YOUR ITEM" />
+        <label th:for="size">SIZE</label>
+        </br>
+        <small>*Choose the appropriate from the followings*</small>
+    </br>
+        <label>EUR</label>
+        <select name="size" class="euro">
+            <option value="">--Choose EURO size--</option>
+            <option value="26">26</option>
+            <option value="28">28</option>
+            <option value="30">30</option>
+            <option value="32">32</option>
+            <option value="34">34</option>
+            <option value="36">36</option>
+            <option value="38">38</option>
+            <option value="40">40</option>
+            <option value="42">42</option>
+            <option value="44">44</option>
+            <option value="46">46</option>
+            <option value="48">48</option>
+            <option value="50">50</option>
+        </select>
+        </br>
+        <label>USA</label>
+        <select name="size" class="usa">
+            <option value="">--Choose USA size--</option>
+            <option value="0">0</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+        </select>
+        </br>
+        <label>UK</label>
+        <select name="size" class="uk">
+            <option value="">--Choose UK size--</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+            <option value="22">22</option>
+            <option value="24">24</option>
+        </select>
     </div>
-</form>
-</body>
-</html>
+    </br>
+    <div>
+        <label th:for="body-type">Your body type</label>
+        <select name="style">
+            <option value="">--Choose body type--</option>
+            <option value="straight-body">Straight Body Type</option>
+            <option value="pear-body">Pear Body Type</option>
+            <option value="hourglass-body">Hourglass Body Type</option>
+            <option value="top-hourglass-body">Top Hourglass Body Type</option>
+            <option value="inverted-triangle-body">Inverted Triangle Body Type</option>
+            <option value="oval-body">Oval Body Type</option>
+            <option value="diamond-body">Diamond Body Type</option>
+        </select>
+    </div>
+    </br>
+    <div>
+        <label th:for="measurements">Your Actual Measurements</label>
+        <input type="text" th:field="*{measurements}"/>
+        <small><a href="see details of measurments"/>*help me with measurements</small>
+    </div>
+    </br>
+    <div>
+        <label th:for="style">Style To Match</label>
+        <select name="style">
+            <option value="">--Choose style to match--</option>
+            <option value="formal-office">Formal Office Wear</option>
+            <option value="business-casual">Business casual</option>
+            <option value="casual-chic">Casual Chic Style</option>
+            <option value="sports-wear">Sports Wear</option>
+            <option value="evening-black-tie">Evening Black Tie</option>
+            <option value="party/wedding">Party/weddingy</option>
+            <option value="pool-party">Pool party</option>
+            <option value="vocation">Vocation</option>
+            <option value="maternity">Maternity</option>
+            <option value="streetWear">Streetwear Style</option>
+            <option value="cowGirl">Cowgirl</option>
+            <option value="hip-hop">Hip-hop-style</option>
+            <option value="rocker-chick">Rocker Chic Style</option>
+            <option value="military">Military Style</option>
+        </select>
+    </div>
+    </br>
+    <div class="quality-rating">
+        <label th:for="quality">Rate of item quality</label>
+			<span class="rating-star-1">
+				<a href="#rate-1">&#9733;</a>
+				<span class="rating-star-2">
+					<a href="#rate-2">&#9733;</a>
+					<span class="rating-star-3">
+						<a href="#rate-3">&#9733;</a>
+						<span class="rating-star-4">
+							<a href="#rate-4">&#9733;</a>
+							<span class="rating-star-5">
+								<a href="#rate-5">&#9733;</a>
+							</span>
+						</span>
+					</span>
+				</span>
+			</span>
+    </div>
+    </br>
+    <div>
+        <label th:for="budget">Price</label>
+        <input type="number" th:field="*{budget}"/>
+    </div>
+    </form>
+    </br>
+    <form action="fileUpload.php" method="post" enctype="multipart/form-data">
+        Upload a File:
+        <input type="file" name="myfile" id="fileToUpload">
+        <input type="submit" name="submit" value="Upload File Now" >
+    </form>
+    </br>
+    <div>
+        <input type="submit" value="SHARE YOUR ITEM"/>
+    </div>
+    </body>
+    </html>
 
