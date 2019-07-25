@@ -22,7 +22,7 @@ class List extends Component {
     render() {
         let fashionItems = this.state.fashionItems.map(item => {
             let path = "/show/" + item.id
-            return <p><a href={path}>{item.name}</a></p>
+            return <p key={item.id}><a href={path}>{item.name}</a></p>
         })
 
         return (
