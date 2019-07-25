@@ -12,7 +12,7 @@ public class FashionItemController {
       return "fashion/list";
     }
 
-    @GetMapping("/show")
+    @GetMapping("/show/{id}")
     public String show() {
       return "fashion/show";
     }

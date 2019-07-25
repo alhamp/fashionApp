@@ -21,7 +21,8 @@ class List extends Component {
 
     render() {
         let fashionItems = this.state.fashionItems.map(item => {
-            return <p>{item.name}</p>
+            let path = "/show/" + item.id
+            return <p><a href={path}>{item.name}</a></p>
         })
 
         return (
