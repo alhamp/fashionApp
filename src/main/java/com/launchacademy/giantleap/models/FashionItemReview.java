@@ -43,4 +43,19 @@ public class FashionItemReview {
 
     @Column
     private Integer rating;
+
+    @Override
+    public String toString() {
+        return "FashionItemReview{" +
+            "id=" + id +
+            ", user=" + user +
+            ", fashionItem=" + fashionItem +
+            ", bodyType='" + bodyType + '\'' +
+            ", itemSize=" + itemSize +
+            ", quality=" + quality +
+            ", comment='" + comment + '\'' +
+            ", photo='" + photo + '\'' +
+            ", rating=" + rating +
+            '}';
+    }
 }
