@@ -7,8 +7,6 @@ class ReviewContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
-            user:props.user,
-            fashionItem:props.fashionItem,
             bodyType:'',
             size:'',
             quality:'',
@@ -35,8 +33,6 @@ class ReviewContainer extends Component {
 
     handleClear(){
         this.setState({
-            user:this.props.user,
-            fashionItem:this.props.fashionItem,
             bodyType:'',
             size:'',
             quality:'',

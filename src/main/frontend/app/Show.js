@@ -5,17 +5,18 @@ import ReviewContainer from './containers/ReviewContainer';
 class Show extends Component {
     constructor(props){
         super(props)
+        let path = window.location.pathname.split('/')
+        let id = path[path.length - 1];
         this.state = {
             fashionItem:{},
             reviews:[],
-            user:{}
+            id:id
         }
     }
 
     componentDidMount(){
-        let path = window.location.pathname.split('/')
-        let id = path[path.length - 1];
-        fetch("/api/v1/fashion/" + id)
+        
+        fetch("/api/v1/fashion/" + this.state.id)
         .then(resp => {
             return resp.json()
         })
@@ -23,7 +24,7 @@ class Show extends Component {
             this.setState({fashionItem:body}) 
         })
 
-        fetch("/api/v1/reviews/" + id)
+        fetch("/api/v1/reviews/" + this.state.id)
         .then(resp => {
             return resp.json()
         })
@@ -42,13 +43,14 @@ class Show extends Component {
 
     addNewReview(review){
         console.log(review)
-        fetch("/api/v1/reviews/", {
+        fetch("/api/v1/reviews/" + this.state.id, {
             method:"POST",
             headers:{'Content-Type':'application/json'},
             credentials: 'same-origin',
             body: JSON.stringify(review)
           })
           .then(response => {
+            console.log(response)
             if(response.ok){
               return response
             }
@@ -57,6 +59,7 @@ class Show extends Component {
             }
           })
           .then(response => {
+
             return response.json()
           })
           .then(object => {
