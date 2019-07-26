@@ -3,8 +3,8 @@ package com.launchacademy.giantleap.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.URL;
 import javax.persistence.*;
+import lombok.ToString;
 
 @Entity
 @Table(name="fashion_item_reviews")
@@ -18,11 +18,11 @@ public class FashionItemReview {
     @Column(name="id", nullable=false, unique=true)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="fashion_item_id")
     private FashionItem fashionItem;
 
@@ -38,7 +38,6 @@ public class FashionItemReview {
     @Column(name="comment")
     private String comment;
 
-    @URL
     @Column
     private String photo;
 
