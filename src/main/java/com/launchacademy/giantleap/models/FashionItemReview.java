@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
-import lombok.ToString;
 
 @Entity
 @Table(name="fashion_item_reviews")

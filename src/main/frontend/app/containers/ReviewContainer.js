@@ -8,7 +8,7 @@ class ReviewContainer extends Component {
         super(props)
         this.state = {
             bodyType:'',
-            size:'',
+            itemSize:'',
             quality:'',
             comment:'',
             photo:'',
@@ -34,7 +34,7 @@ class ReviewContainer extends Component {
     handleClear(){
         this.setState({
             bodyType:'',
-            size:'',
+            itemSize:'',
             quality:'',
             comment:'',
             photo:'',
@@ -82,10 +82,10 @@ class ReviewContainer extends Component {
                 />
                 <SelectField 
                     label="Size"
-                    name="size"
+                    name="itemSize"
                     optionElements={sizeOptions}
                     handleChange={this.handleChange}
-                    value={this.state.size}
+                    value={this.state.itemSize}
                 />
                 <div>
                     <TextField 
