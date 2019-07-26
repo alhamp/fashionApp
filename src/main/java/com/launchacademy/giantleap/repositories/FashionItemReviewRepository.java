@@ -5,7 +5,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ItemReviewRepository extends PagingAndSortingRepository<FashionItemReview, Integer> {
-  FashionItemReview findByName(String name);
+public interface FashionItemReviewRepository extends PagingAndSortingRepository<FashionItemReview, Integer> {
 }
 
