@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BudgetRepository extends PagingAndSortingRepository<Budget, Integer> {
+Budget findByPrice(Integer price);
 }
