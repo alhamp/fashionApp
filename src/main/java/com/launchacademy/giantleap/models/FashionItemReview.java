@@ -44,4 +44,5 @@ public class FashionItemReview {
 
     @Column
     private Integer rating;
+
 }
