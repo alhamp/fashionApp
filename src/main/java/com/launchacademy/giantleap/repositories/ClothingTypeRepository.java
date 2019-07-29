@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClothingTypeRepository extends PagingAndSortingRepository<ClothingType, Integer> {
-  Role findByName(String name);
+  ClothingType findByName(String name);
 }

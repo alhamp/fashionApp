@@ -34,7 +34,6 @@ public class FashionItem {
   @Column
   private String name;
 
-  @URL
   @Column
   private String photo;
 
