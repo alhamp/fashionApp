@@ -45,6 +45,7 @@ public class FashionItemReview {
     @Column
     private Integer rating;
 
+<<<<<<< HEAD
     @Override
     public String toString() {
         return "FashionItemReview{" +
@@ -59,4 +60,6 @@ public class FashionItemReview {
             ", rating=" + rating +
             '}';
     }
+=======
+>>>>>>> 9b282cc261d648f8c0090a24a0ab8d2468b25dbf
 }

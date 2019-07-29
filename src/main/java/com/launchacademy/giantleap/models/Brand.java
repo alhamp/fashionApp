@@ -34,4 +34,5 @@ public class Brand {
 
   @OneToMany(mappedBy = "brand")
   private List<FashionItem> fashionItems = new ArrayList<FashionItem>();
+
 }
