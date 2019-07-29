@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StyleRepository extends PagingAndSortingRepository<Style, Integer> {
+  Style findByName(String name);
 }
