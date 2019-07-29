@@ -1,7 +1,9 @@
 package com.launchacademy.giantleap.controllers;
 
+import com.launchacademy.giantleap.models.Budget;
 import com.launchacademy.giantleap.models.FashionItem;
 import com.launchacademy.giantleap.models.FashionItemNotFoundException;
+import com.launchacademy.giantleap.models.Style;
 import com.launchacademy.giantleap.repositories.FashionItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,6 +35,12 @@ public class FashionItemRestController {
   @GetMapping("/api/v1/fashion/{id}")
   public FashionItem getOneItem(@PathVariable Integer id) {
     return fashionItemRepository.findById(id).orElseThrow(() -> new FashionItemNotFoundException());
+  }
+
+  @GetMapping("api/v1/fashion")
+  public Page<FashionItem> getFashionItemsByParams(@PathVariable("budget") Budget budget,
+      @PathVariable("style") Style style, Pageable pageable){
+    return fashionItemRepository.findByBudgetAndStyle(budget, style, pageable);
   }
 
   @PostMapping("api/v1/fashion")

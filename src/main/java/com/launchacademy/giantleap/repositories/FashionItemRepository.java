@@ -1,12 +1,18 @@
 package com.launchacademy.giantleap.repositories;
 
+import com.launchacademy.giantleap.models.Budget;
 import com.launchacademy.giantleap.models.FashionItem;
+import com.launchacademy.giantleap.models.Style;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
 
 public interface FashionItemRepository extends PagingAndSortingRepository<FashionItem, Integer> {
-<<<<<<< HEAD
   FashionItem findById(int id);
-=======
   FashionItem findByName(String name);
->>>>>>> 9b282cc261d648f8c0090a24a0ab8d2468b25dbf
+
+  @Query("SELECT f FROM FashionItem f WHERE f.budget = :budget AND f.style = :style")
+  public Page<FashionItem> findByBudgetAndStyle(@Param("budget") Budget budget, @Param("style") Style style, Pageable pageable);
 }
