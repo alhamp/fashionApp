@@ -28,8 +28,6 @@ public class FashionItemRestController {
     return fashionItemRepository.findAll(pageable);
   }
 
-
-
   @GetMapping("/api/v1/fashion/{id}")
   public FashionItem getOneItem(@PathVariable Integer id) {
     return fashionItemRepository.findById(id).orElseThrow(() -> new FashionItemNotFoundException());

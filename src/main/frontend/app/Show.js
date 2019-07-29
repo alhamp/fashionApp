@@ -61,12 +61,11 @@ class Show extends Component {
 
   render() {
     let name = this.state.fashionItem.name
-    let user = this.state.user
     let fashionItem = this.state.fashionItem
     return (
       <div>
         <p>{name}</p>
-        <ReviewContainer addNewReview={this.addNewReview} user={user} fashionItem={fashionItem}/>
+        <ReviewContainer addNewReview={this.addNewReview} fashionItem={fashionItem}/>
       </div>
     )
   }

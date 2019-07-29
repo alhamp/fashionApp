@@ -1,5 +1,6 @@
 package com.launchacademy.giantleap.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,7 @@ public class FashionItemReview {
     @Column(name="id", nullable=false, unique=true)
     private Integer id;
 
+    @JsonIgnore
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="user_id")
     private User user;
