@@ -15,7 +15,6 @@ class Show extends Component {
   }
 
   componentDidMount(){
-    let path = window.location.pathname.split('/')
     let id =this.getId()
       fetch("/api/v1/fashion/" + id)
       .then(resp => {
@@ -31,6 +30,14 @@ class Show extends Component {
       })
       .then(body => {
           this.setState({reviews:body.content}) 
+      })
+
+      fetch("api/v1/user")
+      .then(resp => {
+        return resp.json()
+      })
+      .then(body => {
+        this.setState({username:body})
       })
   }
 
