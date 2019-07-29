@@ -5,7 +5,7 @@ import com.launchacademy.giantleap.models.FashionItemNotFoundException;
 import com.launchacademy.giantleap.models.FashionItemReview;
 import com.launchacademy.giantleap.models.User;
 import com.launchacademy.giantleap.repositories.FashionItemRepository;
-import com.launchacademy.giantleap.repositories.ItemReviewRepository;
+import com.launchacademy.giantleap.repositories.FashionItemReviewRepository;
 import com.launchacademy.giantleap.repositories.UserRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ItemReviewRestController {
-  private final ItemReviewRepository itemReviewRepository;
+  private final FashionItemReviewRepository fashionItemReviewRepository;
   private final FashionItemRepository fashionItemRepository;
   private final UserRepository userRepository;
 
   @Autowired
-  public ItemReviewRestController(ItemReviewRepository itemReviewRepository,
+  public ItemReviewRestController(FashionItemReviewRepository fashionItemReviewRepository,
       FashionItemRepository fashionItemRepository,
       UserRepository userRepository){
-    this.itemReviewRepository = itemReviewRepository;
+    this.fashionItemReviewRepository = fashionItemReviewRepository;
     this.fashionItemRepository = fashionItemRepository;
     this.userRepository = userRepository;
   }
@@ -36,7 +36,7 @@ public class ItemReviewRestController {
   @GetMapping("api/v1/reviews/{id}")
   public Page<FashionItemReview> getFashionItems(@PathVariable Integer id, Pageable pageable){
     Optional<FashionItem> fashionItem = fashionItemRepository.findById(id);
-    return itemReviewRepository.findAllByFashionItem(fashionItem, pageable);
+    return fashionItemReviewRepository.findAllByFashionItem(fashionItem, pageable);
   }
 
   @PostMapping("api/v1/reviews/{id}")
@@ -49,6 +49,6 @@ public class ItemReviewRestController {
     FashionItem fashionItem = fashionItemRepository.findById(id).orElseThrow(() -> new FashionItemNotFoundException());
     itemReview.setFashionItem(fashionItem);
     System.out.println(itemReview.toString());
-    return itemReviewRepository.save(itemReview);
+    return fashionItemReviewRepository.save(itemReview);
   }
 }

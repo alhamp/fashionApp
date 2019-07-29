@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import FashionItemDisplay from './components/FashionItemDisplay'
 
 
 class List extends Component {
@@ -21,8 +22,7 @@ class List extends Component {
 
     render() {
         let fashionItems = this.state.fashionItems.map(item => {
-            let path = "/show/" + item.id
-            return <p key={item.id}><a href={path}>{item.name}</a></p>
+            return <FashionItemDisplay key={item.id} item={item} />
         })
 
         return (
