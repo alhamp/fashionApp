@@ -31,14 +31,6 @@ class Show extends Component {
       .then(body => {
           this.setState({reviews:body.content}) 
       })
-
-      fetch("api/v1/user")
-      .then(resp => {
-        return resp.json()
-      })
-      .then(body => {
-        this.setState({username:body})
-      })
   }
 
   addNewReview(review){
