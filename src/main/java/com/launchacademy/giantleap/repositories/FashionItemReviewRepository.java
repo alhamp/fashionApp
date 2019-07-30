@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-public interface ItemReviewRepository extends PagingAndSortingRepository<FashionItemReview, Integer> {
+public interface FashionItemReviewRepository extends PagingAndSortingRepository<FashionItemReview, Integer> {
   Page<FashionItemReview> findAllByFashionItem(FashionItem fashionItem, Pageable pageable);
 }
 

@@ -15,7 +15,8 @@ public class StyleSeeder implements CommandLineRunner {
 
 @Override
   public void run(String... args) throws Exception {
-  final String[] styles = {""};
+  final String[] styles = {"formal-office","business-casual","casual-chic","sports-wear", "evening-black-tie","party/wedding","pool-party","vocation","maternity","streetWear",
+      "cowGirl","hip-hop","rocker-chick","military"};
   for(String styleName : styles) {
     if(styleRepository.findByName(styleName) == null) {
       Style style = new Style();

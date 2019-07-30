@@ -15,7 +15,7 @@ public class ClothingTypeSeeder implements CommandLineRunner {
 
 @Override
   public void run(String... args) throws Exception {
-    final String[] clothingTypes = {""};
+    final String[] clothingTypes = {"Tops","jackets", "blazers", "coats","dresses","jumpsuits","knitwear","shirts|blouses","t-shirts","pants","jeans","shorts","skirts","swimwear"};
     for (String clothingTypeName: clothingTypes){
       if(clothingTypeRepository.findByName(clothingTypeName) == null) {
         ClothingType clothingType = new ClothingType();
