@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import ReviewContainer from './containers/ReviewContainer';
+import React, {Component} from 'react'
+import ReviewContainer from './containers/ReviewContainer'
+import Review from './components/Review'
 
 
 class Show extends Component {
@@ -9,31 +10,24 @@ class Show extends Component {
       fashionItem:{},
       reviews:[]
     }
+    this.addNewReview = this.addNewReview.bind(this)
+    this.getId = this.getId.bind(this)
   }
 
   componentDidMount(){
-    let path = window.location.pathname.split('/')
-    let id = path[path.length - 1];
+    let id =this.getId()
       fetch("/api/v1/fashion/" + id)
       .then(resp => {
           return resp.json()
       })
       .then(body => {
-          this.setState({fashionItem:body}) 
+          this.setState({fashionItem:body.fashionItem, reviews:body.fashionItemReviews.content}) 
       })
 
-      fetch("/api/v1/reviews/" + id)
-      .then(resp => {
-          return resp.json()
-      })
-      .then(body => {
-          this.setState({reviews:body}) 
-      })
   }
 
   addNewReview(review){
-    let path = window.location.pathname.split('/')
-    let id = path[path.length - 1];
+    let id = this.getId()
     fetch("/api/v1/reviews/" + id, {
         method:"POST",
         headers:{'Content-Type':'application/json'},
@@ -59,13 +53,28 @@ class Show extends Component {
       })
     }
 
+    getId(){
+      let path = window.location.pathname.split('/')
+      let id = path[path.length - 1]
+      return id
+    }
+
   render() {
-    let name = this.state.fashionItem.name
     let fashionItem = this.state.fashionItem
+    let reviews = this.state.reviews.map(review => {
+        return <Review key={review.id} review={review}/>
+    })
+
     return (
       <div>
-        <p>{name}</p>
+        <h1>{fashionItem.name}</h1>
+        <img src={fashionItem.photo} alt={fashionItem.name}></img>
+        <p>Quality: {fashionItem.quality}</p>
+        <p>Measurements: {fashionItem.measurements}</p>
+        <p>Brand: {fashionItem.brand}</p>
+        <p>Budget: {fashionItem.budget}</p>
         <ReviewContainer addNewReview={this.addNewReview} fashionItem={fashionItem}/>
+        {reviews}
       </div>
     )
   }
