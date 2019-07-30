@@ -2,7 +2,7 @@ package com.launchacademy.giantleap.controllers;
 
 import com.launchacademy.giantleap.models.FashionItem;
 import com.launchacademy.giantleap.models.FashionItemReview;
-import com.launchacademy.giantleap.repositories.ItemReviewRepository;
+import com.launchacademy.giantleap.repositories.FashionItemReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ItemReviewRestController {
-  private final ItemReviewRepository itemReviewRepository;
+  private final FashionItemReviewRepository itemReviewRepository;
 
   @Autowired
-  public ItemReviewRestController(ItemReviewRepository itemReviewRepository){
+  public ItemReviewRestController(FashionItemReviewRepository itemReviewRepository){
     this.itemReviewRepository = itemReviewRepository;
   }
 
