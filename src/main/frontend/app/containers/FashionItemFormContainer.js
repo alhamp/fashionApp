@@ -16,7 +16,7 @@ constructor(props){
         clothingType:'',
         bodyType:'',
         measurements:'',
-        styles:[],
+        styles:'',
         brand:'',
         fabricWeight:'',
         quality:'',
@@ -51,7 +51,7 @@ handleSubmit(event) {
         clothing_type_id:this.state.clothingType,
         bodyType:this.state.bodyType,
         measurements:this.state.measurements,
-        styles:this.state.styles,
+        style:this.state.styles,
         brand_id:this.state.brand,
         fabricWeight:this.state.fabricWeight,
         quality:this.state.quality,
@@ -60,7 +60,7 @@ handleSubmit(event) {
         budget_id:this.state.budget,
         comment:this.state.comment
     }
-    debugger
+
     this.props.addNewFashionItem(item)
     this.clearForm()
 }
@@ -71,7 +71,7 @@ clearForm(){
         clothingType:'',
         bodyType:'',
         measurements:'',
-        styles:[],
+        styles:'',
         brand:'',
         fabricWeight:'',
         quality:'',
