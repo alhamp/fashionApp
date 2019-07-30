@@ -9,7 +9,6 @@ import App from './App'
 const pageMap = {
   "list": List,
   "show": Show,
-  "new":FashionItemFormContainer,
   "app":App
 }
 

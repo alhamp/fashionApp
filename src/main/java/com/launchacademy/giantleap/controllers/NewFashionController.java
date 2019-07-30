@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class NewFashionController {
     @GetMapping("/fashion/new")
     public String index() {
-        return "fashion/new";
+        return "fashion/app";
     }
 }

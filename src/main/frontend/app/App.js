@@ -7,11 +7,11 @@ super(props);
 this.state = {
 fashionItems : []
 }
-this.addNewItem = this.addNewItem.bind(this)
+this.addNewFashionItem = this.addNewFashionItem.bind(this)
 }
 
-        addNewItem(fashionItem){
-            console.log(fashionItem)
+        addNewFashionItem(fashionItem){
+        console.log(fashionItem)
             fetch("/api/v1/fashion/", {
                 method:"POST",
                 headers:{'Content-Type':'application/json'},
@@ -30,8 +30,8 @@ this.addNewItem = this.addNewItem.bind(this)
                 return response.json()
               })
               .then(object => {
-                console.log(item)
-                this.setState({fashionItems: this.state.fashionItems.concat(item)})
+                console.log(object)
+                this.setState({fashionItems: this.state.fashionItems.concat(object)})
               })
               .catch(error => {
                 console.log(error)
@@ -39,10 +39,11 @@ this.addNewItem = this.addNewItem.bind(this)
         }
 
         render(){
+
     return (
     <div>
     <h1>Helooooooo from added item</h1>
-    <FashionItemFormContainer addNewItem={this.addNewItem} fashionItem={fashionItem}/>
+    <FashionItemFormContainer addNewFashionItem={this.addNewFashionItem} />
     </div>
     )
 }
