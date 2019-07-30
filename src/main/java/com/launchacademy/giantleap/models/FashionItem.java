@@ -52,13 +52,9 @@ public class FashionItem {
   @Column(name="item_size")
   private Integer itemSize;
 
-  @ManyToMany
-  @JoinTable(
-      name="items_styles",
-      joinColumns={@JoinColumn(name="fashion_item_id")},
-      inverseJoinColumns = {@JoinColumn(name="style_id")}
-  )
-  private List<Style> styles = new ArrayList<Style>();
+  @ManyToOne
+  @JoinColumn(name="style_id")
+  private Style style;
 
   @ManyToOne
   @JoinColumn(name="clothing_type_id")

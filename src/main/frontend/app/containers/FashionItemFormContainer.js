@@ -8,6 +8,14 @@ const stylesArray =['formal-office','business-casual','casual-chic','sports-wear
         'evening-black-tie','party/wedding','pool-party','vocation','maternity','streetWear',
         'cowGirl','hip-hop','rocker-chick','military']
 
+const clothingTypeArray = ['Tops','jackets','blazers', 'coats','dresses',
+        'jumpsuits','knitwear','shirts|blouses','t-shirts','pants','jeans','shorts',
+        'skirts','swimwear']
+
+const bodyTypeArray = ['straight-body','pear-body','oval-body', 'diamond-body','hourglass-body','top-hourglass-body','inverted-triangle-body',]
+
+const sizeArray = ['US 0', 'US 2', 'US 4', 'US 8', 'US 10', 'US 12', 'US 14', 'US 16', 'US 18', 'US 20']
+
 class FashionItemFormContainer extends Component {
 constructor(props){
     super(props);
@@ -16,7 +24,7 @@ constructor(props){
         clothingType:'',
         bodyType:'',
         measurements:'',
-        styles:'',
+        style:'',
         brand:'',
         fabricWeight:'',
         quality:'',
@@ -28,22 +36,11 @@ constructor(props){
     this.handleSubmit = this.handleSubmit.bind(this)
     this.clearForm = this.clearForm.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.handleCheckbox = this.handleCheckbox.bind(this)
 }
 
 handleChange(event) {
   this.setState({ [event.target.name]: event.target.value})
 }
-
-handleCheckbox(event){
-    if(this.state.styles.find(function(element) { return element == event.target.value})) {
-        this.setState({styles:this.state.styles.splice(this.state.styles.indexOf(event.target.value), 1)})
-    }
-    else {
-        this.setState({styles:this.state.styles.concat(event.target.value)})
-    }
-}
-
 
 handleSubmit(event) {
     event.preventDefault()
@@ -51,7 +48,7 @@ handleSubmit(event) {
         clothing_type_id:this.state.clothingType,
         bodyType:this.state.bodyType,
         measurements:this.state.measurements,
-        style:this.state.styles,
+        style_id:this.state.style,
         brand_id:this.state.brand,
         fabricWeight:this.state.fabricWeight,
         quality:this.state.quality,
@@ -60,7 +57,6 @@ handleSubmit(event) {
         budget_id:this.state.budget,
         comment:this.state.comment
     }
-
     this.props.addNewFashionItem(item)
     this.clearForm()
 }
@@ -71,7 +67,7 @@ clearForm(){
         clothingType:'',
         bodyType:'',
         measurements:'',
-        styles:'',
+        style:'',
         brand:'',
         fabricWeight:'',
         quality:'',
@@ -84,30 +80,21 @@ clearForm(){
 
 render() {
 
-        let clothingTypeArray = ['Tops','jackets','blazers', 'coats','dresses',
-        'jumpsuits','knitwear','shirts|blouses','t-shirts','pants','jeans','shorts',
-        'skirts','swimwear']
         let clothingTypeOptions = clothingTypeArray.map((name, i) => {
             return <option key={i} value={i}>{name}</option>
         })
 
-        let bodyTypeArray = ['straight-body','pear-body','oval-body', 'diamond-body','hourglass-body','top-hourglass-body','inverted-triangle-body',]
         let bodyTypeOptions = bodyTypeArray.map((name, i) => {
             return <option key={i} value={i}>{name}</option>
         })
 
-        let sizeArray = ['US 0', 'US 2', 'US 4', 'US 8', 'US 10', 'US 12', 'US 14', 'US 16', 'US 18', 'US 20']
         let sizeOptions = sizeArray.map((name, i) => {
             return <option key={i} value={i}>{name}</option>
         })
 
         
         let stylesOptions = stylesArray.map((name, i) => {
-            //return <option key={i} value={i}>{name}</option>
-            return <div key={i} >
-                <label>{name}</label>
-                <input type="checkbox" name="styles" value={i} onClick={this.handleCheckbox}/>
-            </div>
+            return <option key={i} value={i}>{name}</option>
         })
         let options =[]
         for(let i=1; i<6; i++) {
@@ -167,16 +154,13 @@ render() {
                  />
                   </div>
                   <div>
-                {/* <SelectField
+                 <SelectField
                     label="Styles to match"
                     name="styles"
                     optionElements={stylesOptions}
                     handleChange={this.handleChange}
                     value={this.state.styles}
-                /> */}
-                <p>Styles</p>
-                {stylesOptions}
-                
+                />
                 </div>
                 <div>
                    <NumberField
