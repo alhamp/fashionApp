@@ -3,6 +3,9 @@ import TextField from '../components/TextField'
 import SelectField from '../components/SelectField'
 import TextArea from '../components/TextArea'
 
+const bodyTypeArray = ['straight','pear','oval', 'diamond']
+const sizeArray = ['US 0', 'US 2', 'US 4', 'US 8', 'US 10', 'US 12', 'US 14', 'US 16', 'US 18', 'US 20']
+
 class ReviewContainer extends Component {
     constructor(props){
         super(props)
@@ -43,11 +46,11 @@ class ReviewContainer extends Component {
     }
 
     render() {
-        let bodyTypeArray = ['straight','pear','oval', 'diamond']
+        
         let bodyTypeOptions = bodyTypeArray.map((name, i) => {
             return <option key={i} value={i}>{name}</option>
         })
-        let sizeArray = ['US 0', 'US 2', 'US 4', 'US 8', 'US 10', 'US 12', 'US 14', 'US 16', 'US 18', 'US 20']
+        
         let sizeOptions = sizeArray.map((name, i) => {
             return <option key={i} value={i}>{name}</option>
         })

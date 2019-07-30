@@ -17,7 +17,7 @@ public class BrandSeeder implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    final String[] brands = {""};
+    final String[] brands = {"Nike", "Betsey Johnson", "Nine West", "Michael Kors", "Louis Vetton", "Gucci","Addidas"};
     for(String brandName : brands) {
       if(brandRepository.findByName(brandName) == null) {
         Brand brand = new Brand();
