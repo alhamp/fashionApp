@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 
-const TextField = props => {
+const TextArea = props => {
   return(
     <div>
       <label>{props.label}</label>

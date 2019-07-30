@@ -55,7 +55,7 @@ public class FashionItem {
 
   @Column(name="item_size")
   private Integer itemSize;
-  
+
   @ManyToMany
   @JoinTable(
       name="items_styles",
