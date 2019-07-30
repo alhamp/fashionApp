@@ -13,6 +13,6 @@ public interface FashionItemRepository extends PagingAndSortingRepository<Fashio
   FashionItem findById(int id);
   FashionItem findByName(String name);
 
-  @Query("SELECT f FROM FashionItem f WHERE f.budget = :budget AND f.style = :style")
+  @Query(value = "SELECT f FROM FashionItem f WHERE f.budget = :budget AND f.style = :style", nativeQuery = true)
   public Page<FashionItem> findByBudgetAndStyle(@Param("budget") Budget budget, @Param("style") Style style, Pageable pageable);
 }

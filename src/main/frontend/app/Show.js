@@ -21,16 +21,9 @@ class Show extends Component {
           return resp.json()
       })
       .then(body => {
-          this.setState({fashionItem:body}) 
+          this.setState({fashionItem:body.fashionItem, reviews:body.fashionItemReviews.content}) 
       })
 
-      fetch("/api/v1/reviews/" + id)
-      .then(resp => {
-          return resp.json()
-      })
-      .then(body => {
-          this.setState({reviews:body.content}) 
-      })
   }
 
   addNewReview(review){
