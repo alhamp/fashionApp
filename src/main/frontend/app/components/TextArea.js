@@ -10,4 +10,4 @@ const TextField = props => {
   )
 }
 
-export default TextField
+export default TextArea
