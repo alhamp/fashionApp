@@ -1,18 +1,11 @@
 package com.launchacademy.giantleap.controllers;
 
-<<<<<<< HEAD
-import com.launchacademy.giantleap.models.ClothingType;
-import com.launchacademy.giantleap.models.FashionItem;
-import com.launchacademy.giantleap.models.FashionItemNotFoundException;
-import com.launchacademy.giantleap.repositories.ClothingTypeRepository;
-=======
 import com.launchacademy.giantleap.dtos.ItemsAndReviewsDTO;
 import com.launchacademy.giantleap.models.Budget;
 import com.launchacademy.giantleap.models.FashionItem;
 import com.launchacademy.giantleap.models.FashionItemNotFoundException;
 import com.launchacademy.giantleap.models.FashionItemReview;
 import com.launchacademy.giantleap.models.Style;
->>>>>>> c63072f23b281cb477d68c87b9140bca6bc3cef4
 import com.launchacademy.giantleap.repositories.FashionItemRepository;
 import com.launchacademy.giantleap.repositories.FashionItemReviewRepository;
 import com.launchacademy.giantleap.repositories.UserRepository;
@@ -34,15 +27,6 @@ import java.util.Optional;
 @RestController
 public class FashionItemRestController {
 
-<<<<<<< HEAD
-  public final FashionItemRepository fashionItemRepository;
-  public final ClothingTypeRepository clothingTypeRepository;
-
-  @Autowired
-  public FashionItemRestController(FashionItemRepository fashionItemRepository, ClothingTypeRepository clothingTypeRepository){
-    this.fashionItemRepository = fashionItemRepository;
-    this.clothingTypeRepository = clothingTypeRepository;
-=======
   private final FashionItemRepository fashionItemRepository;
   private final FashionItemReviewRepository fashionItemReviewRepository;
   private final UserRepository userRepository;
@@ -54,7 +38,6 @@ public class FashionItemRestController {
     this.fashionItemRepository = fashionItemRepository;
     this.fashionItemReviewRepository = fashionItemReviewRepository;
     this.userRepository = userRepository;
->>>>>>> c63072f23b281cb477d68c87b9140bca6bc3cef4
   }
 
   @GetMapping("api/v1/fashion")
