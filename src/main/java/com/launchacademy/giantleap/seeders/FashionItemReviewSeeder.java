@@ -1,18 +1,18 @@
 package com.launchacademy.giantleap.seeders;
 
 import com.launchacademy.giantleap.models.FashionItemReview;
-import com.launchacademy.giantleap.repositories.ItemReviewRepository;
+import com.launchacademy.giantleap.repositories.FashionItemReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FashionItemReviewSeeder implements CommandLineRunner {
-  private final ItemReviewRepository fashionItemReviewRepository;
+  private final FashionItemReviewRepository fashionItemReviewRepository;
 
 @Autowired
 public FashionItemReviewSeeder(
-    ItemReviewRepository fashionItemReviewRepository){ this.fashionItemReviewRepository = fashionItemReviewRepository;}
+    FashionItemReviewRepository fashionItemReviewRepository){ this.fashionItemReviewRepository = fashionItemReviewRepository;}
 
 @Override
 public void run(String... args) throws Exception {
