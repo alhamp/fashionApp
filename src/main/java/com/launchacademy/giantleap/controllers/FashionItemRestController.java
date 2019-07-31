@@ -1,7 +1,9 @@
 package com.launchacademy.giantleap.controllers;
 
+import com.launchacademy.giantleap.dtos.IndexItemsDTO;
 import com.launchacademy.giantleap.dtos.ItemDTO;
 import com.launchacademy.giantleap.dtos.ItemsAndReviewsDTO;
+import com.launchacademy.giantleap.dtos.ListItemsDTO;
 import com.launchacademy.giantleap.models.Brand;
 import com.launchacademy.giantleap.models.Budget;
 import com.launchacademy.giantleap.models.ClothingType;
@@ -16,6 +18,8 @@ import com.launchacademy.giantleap.repositories.FashionItemRepository;
 import com.launchacademy.giantleap.repositories.FashionItemReviewRepository;
 import com.launchacademy.giantleap.repositories.StyleRepository;
 import com.launchacademy.giantleap.repositories.UserRepository;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -57,8 +61,16 @@ public class FashionItemRestController {
   }
 
   @GetMapping("api/v1/fashion")
-  public Page<FashionItem> getFashionItems(Pageable pageable){
-    return fashionItemRepository.findAll(pageable);
+  public ResponseEntity getFashionItems(Pageable pageable){
+    Page<FashionItem> fashionItems = fashionItemRepository.findAll(pageable);
+    List<IndexItemsDTO> indexItemsDTOs = new ArrayList<>();
+    for(FashionItem item : fashionItems){
+      IndexItemsDTO indexItemsDTO = new IndexItemsDTO(item);
+      indexItemsDTOs.add(indexItemsDTO);
+    }
+    ListItemsDTO listItemsDTO = new ListItemsDTO();
+    listItemsDTO.setIndexItemsDTOS(indexItemsDTOs);
+    return new ResponseEntity<ListItemsDTO>(listItemsDTO, HttpStatus.OK);
   }
 
   @GetMapping("/api/v1/fashion/{id}")
@@ -68,12 +80,12 @@ public class FashionItemRestController {
     ItemDTO itemDTO = new ItemDTO();
     //how to check if not logged in?
     System.out.println(fashionItem.toString());
-    //itemDTO.setStyle(fashionItem.getStyle().getName());
+    itemDTO.setStyle(fashionItem.getStyle().getName());
     itemDTO.setId(fashionItem.getId());
     itemDTO.setBrand(fashionItem.getBrand().getName());
     System.out.println(fashionItem.getBudget().getPrice());
     itemDTO.setBudget(fashionItem.getBudget().getPrice());
-    //itemDTO.setClothingType(fashionItem.getClothingType().getName());
+    itemDTO.setClothingType(fashionItem.getClothingType().getName());
     itemDTO.setItemSize(fashionItem.getItemSize());
     itemDTO.setMeasurements(fashionItem.getMeasurements());
     itemDTO.setName(fashionItem.getName());

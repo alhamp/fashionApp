@@ -65,7 +65,6 @@ public class FashionItem {
   @JoinColumn(name="brand_id")
   private Brand brand;
 
-  @JsonIgnore
   @ManyToOne
   @JoinColumn(name="user_id")
   private User user;
