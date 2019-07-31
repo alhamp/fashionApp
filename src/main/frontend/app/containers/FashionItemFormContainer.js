@@ -79,7 +79,7 @@ clearForm(){
 }
 render() {
         let clothingTypeOptions = clothingTypeArray.map((name, i) => {
-            return <option key={i} value={i}>{name}</option>
+            return <option key={i} value={name}>{name}</option>
         })
 
         let bodyTypeOptions = bodyTypeArray.map((name, i) => {
@@ -89,7 +89,6 @@ render() {
         let sizeOptions = sizeArray.map((name, i) => {
             return <option key={i} value={i}>{name}</option>
         })
-
         
         let stylesOptions = stylesArray.map((name, i) => {
             return <option key={i} value={i}>{name}</option>

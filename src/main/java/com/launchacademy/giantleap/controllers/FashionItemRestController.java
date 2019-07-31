@@ -87,7 +87,6 @@ public class FashionItemRestController {
       itemDTO.setBrand(fashionItem.getBrand().getName());
     }
     if(fashionItem.getBudget() != null) {
-      System.out.println(fashionItem.getBudget().getPrice());
       itemDTO.setBudget(fashionItem.getBudget().getPrice());
     }
     if(fashionItem.getClothingType() != null) {
@@ -121,7 +120,6 @@ public class FashionItemRestController {
 
   @PostMapping("/api/v1/fashion")
   public FashionItem newFashionItem(@RequestBody ItemDTO itemDTO, @Autowired FashionItem fashionItem, Model model, Authentication authentication){
-    System.out.println(itemDTO);
     String brandString = itemDTO.getBrand();
     Brand brand;
     if(brandRepository.findByName((brandString)) != null){
@@ -137,7 +135,6 @@ public class FashionItemRestController {
     fashionItem.setBodyType(itemDTO.getBodyType());
 
     if(itemDTO.getBudget() != null) {
-      System.out.println(itemDTO.getBudget());
       Budget budget;
       try {
         budget = budgetRepository.findByPrice(itemDTO.getBudget());
@@ -193,7 +190,6 @@ public class FashionItemRestController {
     itemReview.setUser(currentUser);
     FashionItem fashionItem = fashionItemRepository.findById(id).orElseThrow(() -> new FashionItemNotFoundException());
     itemReview.setFashionItem(fashionItem);
-    System.out.println(itemReview.toString());
     return fashionItemReviewRepository.save(itemReview);
   }
 }

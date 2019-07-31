@@ -30,9 +30,5 @@ public class Budget {
 
   @Column(nullable = false)
   private Integer price;
-
-  @OneToMany(mappedBy = "budget")
-  private List<FashionItem> fashionItems = new ArrayList<FashionItem>();
-
 }
 

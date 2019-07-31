@@ -33,6 +33,7 @@ class List extends Component {
             <div>
                 <h2>Find your style:</h2>
                 {fashionItems}
+                <a href="/fashion/new">Add a new item</a>
             </div>
         )
     }

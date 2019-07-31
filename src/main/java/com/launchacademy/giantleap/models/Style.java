@@ -27,8 +27,5 @@ public class Style {
   @NonNull
   @Column(nullable = false)
   private String name;
-
-  @OneToMany(mappedBy = "style")
-  private Set<FashionItem> fashionItems = new HashSet<FashionItem>();
 }
 

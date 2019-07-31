@@ -1,6 +1,7 @@
 package com.launchacademy.giantleap.models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,6 +40,7 @@ public class User {
     inverseJoinColumns=
     @JoinColumn(name="role_id", referencedColumnName="id")
   )
+  @JsonManagedReference
   private Set<Role> roles;
 
 }
