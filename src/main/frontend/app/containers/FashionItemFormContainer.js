@@ -45,16 +45,16 @@ handleChange(event) {
 handleSubmit(event) {
     event.preventDefault()
     let item = {name:this.state.name,
-        clothing_type_id:this.state.clothingType,
+        clothingType:this.state.clothingType,
         bodyType:this.state.bodyType,
         measurements:this.state.measurements,
-        style_id:this.state.style,
-        brand_id:this.state.brand,
+        style:this.state.style,
+        brand:this.state.brand,
         fabricWeight:this.state.fabricWeight,
         quality:this.state.quality,
         itemSize:this.state.itemSize,
         photo:this.state.photo,
-        budget_id:this.state.budget,
+        budget:this.state.budget,
         comment:this.state.comment
     }
     this.props.addNewFashionItem(item)
@@ -79,17 +79,16 @@ clearForm(){
 }
 render() {
         let clothingTypeOptions = clothingTypeArray.map((name, i) => {
-            return <option key={i} value={i}>{name}</option>
+            return <option key={i} value={name}>{name}</option>
         })
 
         let bodyTypeOptions = bodyTypeArray.map((name, i) => {
-            return <option key={i} value={i}>{name}</option>
+            return <option key={i} value={name}>{name}</option>
         })
 
         let sizeOptions = sizeArray.map((name, i) => {
             return <option key={i} value={i}>{name}</option>
         })
-
         
         let stylesOptions = stylesArray.map((name, i) => {
             return <option key={i} value={i}>{name}</option>
@@ -154,7 +153,7 @@ render() {
                   <div>
                  <SelectField
                     label="Styles to match"
-                    name="styles"
+                    name="style"
                     optionElements={stylesOptions}
                     handleChange={this.handleChange}
                     value={this.state.styles}
@@ -192,7 +191,7 @@ render() {
                     />
                 </div>
                 <div>
-                <input className="button" type="submit" value="Add your item" />
+                    <input className="button" type="submit" value="Add your item" />
                 </div>
             </form>
         )

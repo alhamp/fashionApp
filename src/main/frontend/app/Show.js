@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import ReviewContainer from './containers/ReviewContainer'
 import Review from './components/Review'
 
-
 class Show extends Component {
   constructor(props){
     super(props)
@@ -21,9 +20,8 @@ class Show extends Component {
           return resp.json()
       })
       .then(body => {
-          this.setState({fashionItem:body.fashionItem, reviews:body.fashionItemReviews.content}) 
+          this.setState({fashionItem:body.itemDTO, reviews:body.fashionItemReviews.content}) 
       })
-
   }
 
   addNewReview(review){
@@ -51,13 +49,13 @@ class Show extends Component {
       .catch(error => {
         console.log(error)
       })
-    }
+  }
 
-    getId(){
-      let path = window.location.pathname.split('/')
-      let id = path[path.length - 1]
-      return id
-    }
+  getId(){
+    let path = window.location.pathname.split('/')
+    let id = path[path.length - 1]
+    return id
+  }
 
   render() {
     let fashionItem = this.state.fashionItem
@@ -68,11 +66,12 @@ class Show extends Component {
     return (
       <div>
         <h1>{fashionItem.name}</h1>
-        <img src={fashionItem.photo} alt={fashionItem.name}></img>
+        <img src={fashionItem.photo} alt={fashionItem.name} width="30%"></img>
         <p>Quality: {fashionItem.quality}</p>
+        <p>Style: {fashionItem.style}</p>
         <p>Measurements: {fashionItem.measurements}</p>
         <p>Brand: {fashionItem.brand}</p>
-        <p>Budget: {fashionItem.budget}</p>
+        <p>Price: {fashionItem.budget}</p>
         <ReviewContainer addNewReview={this.addNewReview} fashionItem={fashionItem}/>
         {reviews}
       </div>

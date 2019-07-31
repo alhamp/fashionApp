@@ -31,8 +31,4 @@ public class Brand {
   @NonNull
   @Column(nullable = false)
   private String name;
-
-  @OneToMany(mappedBy = "brand")
-  private List<FashionItem> fashionItems = new ArrayList<FashionItem>();
-
 }

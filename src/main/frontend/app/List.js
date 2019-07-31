@@ -15,20 +15,25 @@ class List extends Component {
             return resp.json()
         })
         .then(body => {
-            this.setState({fashionItems:body.content}) 
+            this.setState({fashionItems:body.indexItemsDTOS}) 
         })
     }
 
     render() {
         let fashionItems = this.state.fashionItems.map(item => {
             let path = "/show/" + item.id
-            return <p key={item.id}><a href={path}>{item.name}</a></p>
+            return (
+            <div key={item.id}>
+                <img src={item.photo} alt={item.name} width="30%"></img>
+                <p><a href={path}>{item.name}</a></p>
+            </div>)
         })
 
         return (
             <div>
                 <h2>Find your style:</h2>
                 {fashionItems}
+                <a href="/fashion/new">Add a new item</a>
             </div>
         )
     }

@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React from "react"
 
 const NumberField = props => {
   return(
@@ -7,8 +7,8 @@ const NumberField = props => {
       <input
         name={props.name}
         type='number'
-        value={props.content}
-        onChange={props.handleInput}
+        value={props.value}
+        onChange={props.handleChange}
       />
     </div>
   )

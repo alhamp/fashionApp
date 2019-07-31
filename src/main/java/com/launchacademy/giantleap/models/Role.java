@@ -1,5 +1,8 @@
 package com.launchacademy.giantleap.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,5 +29,8 @@ public class Role {
   private String name;
 
   @ManyToMany(mappedBy = "roles")
+  @JsonIdentityInfo(
+      generator = ObjectIdGenerators.PropertyGenerator.class,
+      property = "id")
   private Set<User> users;
 }
