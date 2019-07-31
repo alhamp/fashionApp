@@ -10,5 +10,6 @@ import org.springframework.data.domain.Page;
 @Setter
 public class ItemsAndReviewsDTO {
   private Page<FashionItemReview> fashionItemReviews;
-  private FashionItem fashionItem;
+  private ItemDTO itemDTO;
+  private boolean loggedIn;
 }

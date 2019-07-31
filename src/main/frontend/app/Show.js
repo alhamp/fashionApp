@@ -18,10 +18,12 @@ class Show extends Component {
     let id =this.getId()
       fetch("/api/v1/fashion/" + id)
       .then(resp => {
+          console.log(resp)
           return resp.json()
       })
       .then(body => {
-          this.setState({fashionItem:body.fashionItem, reviews:body.fashionItemReviews.content}) 
+        console.log(body)
+          this.setState({fashionItem:body.itemDTO, reviews:body.fashionItemReviews.content}) 
       })
 
   }

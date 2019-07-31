@@ -1,7 +1,5 @@
 package com.launchacademy.giantleap.models;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.URL;
-import org.springframework.boot.jackson.JsonComponent;
 
 @Entity
 @Table(name="fashion_items")
@@ -68,12 +63,10 @@ public class FashionItem {
   @JoinColumn(name="clothing_type_id")
   private ClothingType clothingType;
 
-  @JsonIgnore
   @ManyToOne
   @JoinColumn(name="budget_id")
   private Budget budget;
 
-  @JsonIgnore
   @ManyToOne
   @JoinColumn(name="brand_id")
   private Brand brand;

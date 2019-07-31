@@ -28,7 +28,6 @@ public class Budget {
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
-  @NonNull
   @Column(nullable = false)
   private Integer price;
 

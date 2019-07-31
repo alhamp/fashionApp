@@ -1,11 +1,13 @@
 package com.launchacademy.giantleap.controllers;
 
+import com.launchacademy.giantleap.dtos.ItemDTO;
 import com.launchacademy.giantleap.dtos.ItemsAndReviewsDTO;
 import com.launchacademy.giantleap.models.Budget;
 import com.launchacademy.giantleap.models.FashionItem;
 import com.launchacademy.giantleap.models.FashionItemNotFoundException;
 import com.launchacademy.giantleap.models.FashionItemReview;
 import com.launchacademy.giantleap.models.Style;
+import com.launchacademy.giantleap.repositories.BrandRepository;
 import com.launchacademy.giantleap.repositories.FashionItemRepository;
 import com.launchacademy.giantleap.repositories.FashionItemReviewRepository;
 import com.launchacademy.giantleap.repositories.UserRepository;
@@ -30,6 +32,9 @@ public class FashionItemRestController {
   private final UserRepository userRepository;
 
   @Autowired
+  private BrandRepository brandRepository;
+
+  @Autowired
   public FashionItemRestController(FashionItemRepository fashionItemRepository,
       FashionItemReviewRepository fashionItemReviewRepository,
       UserRepository userRepository){
@@ -47,7 +52,21 @@ public class FashionItemRestController {
   public ResponseEntity getOneItem(@PathVariable Integer id, @Autowired ItemsAndReviewsDTO itemsAndReviewsDTO, Pageable pageable) {
     FashionItem fashionItem = fashionItemRepository.findById(id).orElseThrow(() -> new FashionItemNotFoundException());
     Page<FashionItemReview> fashionItemReviews = fashionItemReviewRepository.findAllByFashionItem(fashionItem, pageable);
-    itemsAndReviewsDTO.setFashionItem(fashionItem);
+    ItemDTO itemDTO = new ItemDTO();
+    //how to check if not logged in?
+    //add style
+    itemDTO.setId(fashionItem.getId());
+    itemDTO.setBrand(fashionItem.getBrand().getName());
+    System.out.println(fashionItem.getBudget().getPrice());
+    itemDTO.setBudget(fashionItem.getBudget().getPrice());
+    //itemDTO.setClothingType(fashionItem.getClothingType().getName());
+    itemDTO.setItemSize(fashionItem.getItemSize());
+    itemDTO.setMeasurements(fashionItem.getMeasurements());
+    itemDTO.setName(fashionItem.getName());
+    itemDTO.setPhoto(fashionItem.getPhoto());
+    itemDTO.setQuality(fashionItem.getQuality());
+    System.out.println(itemDTO);
+    itemsAndReviewsDTO.setItemDTO(itemDTO);
     itemsAndReviewsDTO.setFashionItemReviews(fashionItemReviews);
     return new ResponseEntity<ItemsAndReviewsDTO>(itemsAndReviewsDTO, HttpStatus.OK);
   }
