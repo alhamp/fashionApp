@@ -30,8 +30,6 @@
             return response.json()
           })
           .then(object => {
-            console.log("returning object")
-            console.log(object)
             this.setState({fashionItems: this.state.fashionItems.concat(object)})
           })
           .catch(error => {

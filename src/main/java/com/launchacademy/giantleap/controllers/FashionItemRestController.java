@@ -79,19 +79,35 @@ public class FashionItemRestController {
     Page<FashionItemReview> fashionItemReviews = fashionItemReviewRepository.findAllByFashionItem(fashionItem, pageable);
     ItemDTO itemDTO = new ItemDTO();
     //how to check if not logged in?
-    System.out.println(fashionItem.toString());
-    itemDTO.setStyle(fashionItem.getStyle().getName());
+    if(fashionItem.getStyle() != null) {
+      itemDTO.setStyle(fashionItem.getStyle().getName());
+    }
     itemDTO.setId(fashionItem.getId());
-    itemDTO.setBrand(fashionItem.getBrand().getName());
-    System.out.println(fashionItem.getBudget().getPrice());
-    itemDTO.setBudget(fashionItem.getBudget().getPrice());
-    itemDTO.setClothingType(fashionItem.getClothingType().getName());
-    itemDTO.setItemSize(fashionItem.getItemSize());
-    itemDTO.setMeasurements(fashionItem.getMeasurements());
-    itemDTO.setName(fashionItem.getName());
-    itemDTO.setPhoto(fashionItem.getPhoto());
-    itemDTO.setQuality(fashionItem.getQuality());
-    System.out.println(itemDTO);
+    if(fashionItem.getBrand() != null) {
+      itemDTO.setBrand(fashionItem.getBrand().getName());
+    }
+    if(fashionItem.getBudget() != null) {
+      System.out.println(fashionItem.getBudget().getPrice());
+      itemDTO.setBudget(fashionItem.getBudget().getPrice());
+    }
+    if(fashionItem.getClothingType() != null) {
+      itemDTO.setClothingType(fashionItem.getClothingType().getName());
+    }
+    if(fashionItem.getItemSize() != null){
+      itemDTO.setItemSize(fashionItem.getItemSize());
+    }
+    if(fashionItem.getMeasurements() != null) {
+      itemDTO.setMeasurements(fashionItem.getMeasurements());
+    }
+    if(fashionItem.getName() != null) {
+      itemDTO.setName(fashionItem.getName());
+    }
+    if(fashionItem.getPhoto() != null){
+      itemDTO.setPhoto(fashionItem.getPhoto());
+    }
+    if(fashionItem.getQuality() != null){
+      itemDTO.setQuality(fashionItem.getQuality());
+    }
     itemsAndReviewsDTO.setItemDTO(itemDTO);
     itemsAndReviewsDTO.setFashionItemReviews(fashionItemReviews);
     return new ResponseEntity<ItemsAndReviewsDTO>(itemsAndReviewsDTO, HttpStatus.OK);

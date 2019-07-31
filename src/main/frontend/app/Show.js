@@ -70,7 +70,7 @@ class Show extends Component {
     return (
       <div>
         <h1>{fashionItem.name}</h1>
-        <img src={fashionItem.photo} alt={fashionItem.name}></img>
+        <img src={fashionItem.photo} alt={fashionItem.name} width="30%"></img>
         <p>Quality: {fashionItem.quality}</p>
         <p>Style: {fashionItem.style}</p>
         <p>Measurements: {fashionItem.measurements}</p>

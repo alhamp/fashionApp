@@ -15,7 +15,6 @@ class List extends Component {
             return resp.json()
         })
         .then(body => {
-            console.log(body)
             this.setState({fashionItems:body.indexItemsDTOS}) 
         })
     }
@@ -25,7 +24,7 @@ class List extends Component {
             let path = "/show/" + item.id
             return (
             <div key={item.id}>
-                <img src={item.photo} alt={item.name}></img>
+                <img src={item.photo} alt={item.name} width="30%"></img>
                 <p><a href={path}>{item.name}</a></p>
             </div>)
         })
