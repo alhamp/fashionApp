@@ -6,12 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping
-public class FashionItemController {
-    @GetMapping("/")
+public class NewFashionController {
+    @GetMapping("/fashion/new")
     public String index() {
-      return "fashion/list";
+        return "fashion/app";
     }
-
-    @GetMapping("/show/{id}")
-    public String show() { return "fashion/show"; }
 }

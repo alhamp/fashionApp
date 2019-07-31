@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 public class FashionItemRestController {
 
@@ -58,8 +60,9 @@ public class FashionItemRestController {
     return fashionItemRepository.findByBudgetAndStyle(budget, style, pageable);
   }
 
-  @PostMapping("api/v1/fashion")
+  @PostMapping("/api/v1/fashion")
   public FashionItem newFashionItem(@RequestBody FashionItem fashionItem, Model model){
+    System.out.println(fashionItem);
     return fashionItemRepository.save(fashionItem);
   }
 
