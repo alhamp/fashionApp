@@ -31,4 +31,3 @@ public class Budget {
   @Column(nullable = false)
   private Integer price;
 }
-

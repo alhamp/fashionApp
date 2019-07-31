@@ -1,7 +1,8 @@
 package com.launchacademy.giantleap.models;
 
-
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class User {
-
   @Id
   @SequenceGenerator(name = "user_generator", sequenceName = "users_id_seq", allocationSize = 1)
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
@@ -40,7 +40,8 @@ public class User {
     inverseJoinColumns=
     @JoinColumn(name="role_id", referencedColumnName="id")
   )
-  @JsonManagedReference
+  @JsonIdentityInfo(
+      generator = ObjectIdGenerators.PropertyGenerator.class,
+      property = "id")
   private Set<Role> roles;
-
 }

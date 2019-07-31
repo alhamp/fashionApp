@@ -136,10 +136,10 @@ public class FashionItemRestController {
 
     if(itemDTO.getBudget() != null) {
       Budget budget;
-      try {
+      if(budgetRepository.findByPrice(itemDTO.getBudget()) != null){
         budget = budgetRepository.findByPrice(itemDTO.getBudget());
         fashionItem.setBudget(budget);
-      } catch (NullPointerException exception) {
+      } else {
         budget = new Budget();
         budget.setPrice(itemDTO.getBudget());
         budgetRepository.save(budget);
