@@ -18,7 +18,7 @@ public class FashionItemReviewRestController {
 
   @Autowired
   public FashionItemReviewRestController(FashionItemReviewRepository fashionItemReviewRepository){
-    this.fashionItemReviewRepository = itemReviewRepository;
+    this.fashionItemReviewRepository = fashionItemReviewRepository;
   }
 
   @GetMapping("api/v1/reviews/{id}")
