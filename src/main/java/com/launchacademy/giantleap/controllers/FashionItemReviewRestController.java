@@ -17,7 +17,7 @@ public class FashionItemReviewRestController {
   private final FashionItemReviewRepository fashionItemReviewRepository;
 
   @Autowired
-  public FashionItemReviewRestController(FashionItemReviewRepository itemReviewRepository){
+  public FashionItemReviewRestController(FashionItemReviewRepository fashionItemReviewRepository){
     this.fashionItemReviewRepository = itemReviewRepository;
   }
 

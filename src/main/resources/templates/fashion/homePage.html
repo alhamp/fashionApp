@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org"
       th:replace="~{fragments/layout :: layout (~{::body})}">
+      <head>
+        <title>Style Voice Home Page</title>
+        <link rel="stylesheet" href="/foundation/css/foundation.min.css">
+      </head>
 <body>
 <div id="homePage">
 </div>
@@ -12,7 +16,8 @@
       </div>
     </div>
     <div class="grid-x grid-padding-x">
-      <div class="large-4 medium-4 cell">
+        <div class="large-12 cell">
+          <div class="primary callout">
         <p><a href="/style">Browse Style</a><br />Pick a Style Any Style</p>
       </div>
       <div class="large-4 medium-4 cell">
@@ -25,7 +30,7 @@
         <p><a href="/addstyle">Add a Style</a><br />I wanna share a style!</p>
       </div>
       <div class="large-4 medium-4 cell">
-        <p><a href="/under">Add a Style</a><br />I wanna share a style!</p>
+        <p><a href="/under">Add Something</a><br />I wanna share something</p>
       </div>
   
 <script src="/bundle.js"></script>
