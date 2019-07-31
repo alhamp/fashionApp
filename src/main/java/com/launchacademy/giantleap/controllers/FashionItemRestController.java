@@ -2,14 +2,19 @@ package com.launchacademy.giantleap.controllers;
 
 import com.launchacademy.giantleap.dtos.ItemDTO;
 import com.launchacademy.giantleap.dtos.ItemsAndReviewsDTO;
+import com.launchacademy.giantleap.models.Brand;
 import com.launchacademy.giantleap.models.Budget;
+import com.launchacademy.giantleap.models.ClothingType;
 import com.launchacademy.giantleap.models.FashionItem;
 import com.launchacademy.giantleap.models.FashionItemNotFoundException;
 import com.launchacademy.giantleap.models.FashionItemReview;
 import com.launchacademy.giantleap.models.Style;
 import com.launchacademy.giantleap.repositories.BrandRepository;
+import com.launchacademy.giantleap.repositories.BudgetRepository;
+import com.launchacademy.giantleap.repositories.ClothingTypeRepository;
 import com.launchacademy.giantleap.repositories.FashionItemRepository;
 import com.launchacademy.giantleap.repositories.FashionItemReviewRepository;
+import com.launchacademy.giantleap.repositories.StyleRepository;
 import com.launchacademy.giantleap.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -35,6 +40,12 @@ public class FashionItemRestController {
 
   @Autowired
   private BrandRepository brandRepository;
+  @Autowired
+  private BudgetRepository budgetRepository;
+  @Autowired
+  private ClothingTypeRepository clothingTypeRepository;
+  @Autowired
+  private StyleRepository styleRepository;
 
   @Autowired
   public FashionItemRestController(FashionItemRepository fashionItemRepository,
@@ -56,7 +67,8 @@ public class FashionItemRestController {
     Page<FashionItemReview> fashionItemReviews = fashionItemReviewRepository.findAllByFashionItem(fashionItem, pageable);
     ItemDTO itemDTO = new ItemDTO();
     //how to check if not logged in?
-    //add style
+    System.out.println(fashionItem.toString());
+    //itemDTO.setStyle(fashionItem.getStyle().getName());
     itemDTO.setId(fashionItem.getId());
     itemDTO.setBrand(fashionItem.getBrand().getName());
     System.out.println(fashionItem.getBudget().getPrice());
@@ -80,8 +92,67 @@ public class FashionItemRestController {
   }
 
   @PostMapping("/api/v1/fashion")
-  public FashionItem newFashionItem(@RequestBody FashionItem fashionItem, Model model){
-    System.out.println(fashionItem);
+  public FashionItem newFashionItem(@RequestBody ItemDTO itemDTO, @Autowired FashionItem fashionItem, Model model, Authentication authentication){
+    System.out.println(itemDTO);
+    String brandString = itemDTO.getBrand();
+    Brand brand;
+    if(brandRepository.findByName((brandString)) != null){
+       brand = brandRepository.findByName(brandString);
+    }
+    else{
+      brand = new Brand();
+      brand.setName(brandString);
+      brandRepository.save(brand);
+    }
+    fashionItem.setBrand(brand);
+    fashionItem.setName(itemDTO.getName());
+    fashionItem.setBodyType(itemDTO.getBodyType());
+
+    if(itemDTO.getBudget() != null) {
+      System.out.println(itemDTO.getBudget());
+      Budget budget;
+      try {
+        budget = budgetRepository.findByPrice(itemDTO.getBudget());
+        fashionItem.setBudget(budget);
+      } catch (NullPointerException exception) {
+        budget = new Budget();
+        budget.setPrice(itemDTO.getBudget());
+        budgetRepository.save(budget);
+        fashionItem.setBudget(budget);
+      }
+    }
+
+    if(itemDTO.getClothingType() != null){
+      ClothingType clothingType;
+      if(clothingTypeRepository.findByName(itemDTO.getClothingType()) != null){
+        clothingType = clothingTypeRepository.findByName(itemDTO.getClothingType());
+      }
+      else{
+        clothingType = new ClothingType();
+        clothingType.setName(itemDTO.getClothingType());
+        clothingTypeRepository.save(clothingType);
+      }
+      fashionItem.setClothingType(clothingType);
+    }
+
+    fashionItem.setItemSize(itemDTO.getItemSize());
+    fashionItem.setMeasurements(itemDTO.getMeasurements());
+    fashionItem.setPhoto(itemDTO.getPhoto());
+    fashionItem.setQuality(itemDTO.getQuality());
+    Style style;
+    if(styleRepository.findByName(itemDTO.getStyle()) != null){
+      style = styleRepository.findByName(itemDTO.getStyle());
+    }
+    else{
+      style = new Style();
+      style.setName(itemDTO.getStyle());
+      styleRepository.save(style);
+    }
+    fashionItem.setStyle(style);
+    org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)authentication.getPrincipal();
+    String username = user.getUsername();
+    com.launchacademy.giantleap.models.User currentUser = userRepository.findByUsername(username);
+    fashionItem.setUser(currentUser);
     return fashionItemRepository.save(fashionItem);
   }
 

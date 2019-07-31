@@ -72,6 +72,7 @@ class Show extends Component {
         <h1>{fashionItem.name}</h1>
         <img src={fashionItem.photo} alt={fashionItem.name}></img>
         <p>Quality: {fashionItem.quality}</p>
+        <p>Style: {fashionItem.style}</p>
         <p>Measurements: {fashionItem.measurements}</p>
         <p>Brand: {fashionItem.brand}</p>
         <p>Budget: {fashionItem.budget}</p>
