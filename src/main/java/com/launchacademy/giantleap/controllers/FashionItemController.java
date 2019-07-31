@@ -14,6 +14,4 @@ public class FashionItemController {
 
     @GetMapping("/show/{id}")
     public String show() { return "fashion/show"; }
-
-
 }

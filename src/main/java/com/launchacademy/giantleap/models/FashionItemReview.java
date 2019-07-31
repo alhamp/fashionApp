@@ -45,16 +45,16 @@ public class FashionItemReview {
 
     @Override
     public String toString() {
-        return "FashionItemReview{" +
-                "id=" + id +
-                ", user=" + user +
-                ", fashionItem=" + fashionItem +
-                ", bodyType='" + bodyType + '\'' +
-                ", itemSize=" + itemSize +
-                ", quality=" + quality +
-                ", comment='" + comment + '\'' +
-                ", photo='" + photo + '\'' +
-                ", rating=" + rating +
-                '}';
+    return "FashionItemReview{" +
+    "id=" + id +
+    ", user=" + user +
+    ", fashionItem=" + fashionItem +
+    ", bodyType='" + bodyType + '\'' +
+    ", itemSize=" + itemSize +
+    ", quality=" + quality +
+    ", comment='" + comment + '\'' +
+    ", photo='" + photo + '\'' +
+    ", rating=" + rating +
+    '}';
     }
 }

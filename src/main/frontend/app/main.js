@@ -5,7 +5,6 @@ import Show from './Show'
 import FashionItemFormContainer from './containers/FashionItemFormContainer'
 import App from './App'
 
-
 const pageMap = {
   "list": List,
   "show": Show,

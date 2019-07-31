@@ -77,9 +77,7 @@ clearForm(){
         comment:''
     })
 }
-
 render() {
-
         let clothingTypeOptions = clothingTypeArray.map((name, i) => {
             return <option key={i} value={i}>{name}</option>
         })

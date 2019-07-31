@@ -62,9 +62,6 @@ public class FashionItemRestController {
 
   @PostMapping("/api/v1/fashion")
   public FashionItem newFashionItem(@RequestBody FashionItem fashionItem, Model model){
-//    int clothing = fashionItem.getClothingType().getName();
-//    Optional<ClothingType> clothingItem = clothingTypeRepository.findById(clothing);
-//    fashionItem.setClothingType(clothingItem);
     System.out.println(fashionItem);
     return fashionItemRepository.save(fashionItem);
   }
