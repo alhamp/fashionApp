@@ -16,6 +16,8 @@ const bodyTypeArray = ['straight-body','pear-body','oval-body', 'diamond-body','
 
 const sizeArray = ['US 0', 'US 2', 'US 4', 'US 8', 'US 10', 'US 12', 'US 14', 'US 16', 'US 18', 'US 20']
 
+const budgetArray = [25, 50, 100, 200, 300, 400, 500, 600]
+
 class FashionItemFormContainer extends Component {
 constructor(props){
     super(props);
@@ -91,12 +93,15 @@ render() {
         })
         
         let stylesOptions = stylesArray.map((name, i) => {
-            return <option key={i} value={i}>{name}</option>
+            return <option key={i} value={name}>{name}</option>
         })
         let options =[]
         for(let i=1; i<6; i++) {
             options.push(<option key={i} value={i}>{i}</option>)
         }
+        let budgetOptions = budgetArray.map((amount, i) => {
+            return <option key={i} value={amount}>{amount}</option>
+        })
 
         return (
             <form onSubmit={this.handleSubmit}>
@@ -160,9 +165,10 @@ render() {
                 />
                 </div>
                 <div>
-                   <NumberField
-                    label="Price"
+                   <SelectField
+                    label="Budget Category"
                     name="budget"
+                    optionElements={budgetOptions}
                     handleChange={this.handleChange}
                     value={this.state.budget}
                 />
@@ -182,14 +188,6 @@ render() {
                     handleChange={this.handleChange}
                     value={this.state.quality}
                 />
-                <div>
-                    <TextArea
-                        label="Comment"
-                        name="comment"
-                        handleChange={this.handleChange}
-                        value={this.state.comment}
-                    />
-                </div>
                 <div>
                     <input className="button" type="submit" value="Add your item" />
                 </div>

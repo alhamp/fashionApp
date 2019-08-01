@@ -3,6 +3,7 @@ package com.launchacademy.giantleap.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping
@@ -13,14 +14,13 @@ public class FashionItemController {
     }
 
     @GetMapping("/list")
-    public String list() {return "fashion/list";}
+    public String list(@RequestParam(value="budget", required = false) Integer budget,
+        @RequestParam(value="style", required=false) String style) {
+      return "fashion/list";
+    }
 
     @GetMapping("/show/{id}")
-<<<<<<< HEAD
-    public String show() { return "fashion/show"; }
-=======
     public String show() {
       return "fashion/show";
     }
->>>>>>> d25804f143eaa0088fd62ad1bd742375078513de
 }

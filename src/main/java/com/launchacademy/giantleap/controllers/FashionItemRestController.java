@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -112,10 +113,27 @@ public class FashionItemRestController {
     return new ResponseEntity<ItemsAndReviewsDTO>(itemsAndReviewsDTO, HttpStatus.OK);
   }
 
-  @GetMapping("api/v1/fashion-query")
-  public Page<FashionItem> getFashionItemsByParams(@PathVariable("budget") Budget budget,
-      @PathVariable("style") Style style, Pageable pageable){
-    return fashionItemRepository.findByBudgetAndStyle(budget, style, pageable);
+  @GetMapping("api/v1/budget/")
+  public Page<FashionItem> getFashionItemsByBudget(@RequestParam("budget") Integer budget, Pageable pageable){
+    Budget budgetEntity = budgetRepository.findByPrice(budget);
+    int budgetId = budgetEntity.getId();
+    return fashionItemRepository.findByBudget(budgetId, pageable);
+  }
+  @GetMapping("api/v1/style/")
+  public Page<FashionItem> getFashionItemsByStyle(@RequestParam("style") String style, Pageable pageable){
+    Style styleEntity = styleRepository.findByName(style);
+    int styleid = styleEntity.getId();
+    return fashionItemRepository.findByStyle(styleid, pageable);
+  }
+  @GetMapping("api/v1/fashion/")
+  public Page<FashionItem> getFashionItemsByParams(@RequestParam("budget") Integer budget,
+      @RequestParam("style") String style, Pageable pageable){
+    Budget budgetEntity = budgetRepository.findByPrice(budget);
+    int budgetId = budgetEntity.getId();
+    Style styleEntity = styleRepository.findByName(style);
+    int styleId = styleEntity.getId();
+    Page<FashionItem> page = fashionItemRepository.findByBudgetAndStyle(budgetId, styleId, pageable);
+    return page;
   }
 
   @PostMapping("/api/v1/fashion")
