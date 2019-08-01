@@ -71,7 +71,10 @@ class Show extends Component {
       addReview = <p><a>Log in</a> to add a review</p>
     }
 
-    let deletebutton = <a className="button">Delete</a>
+    let deletebutton 
+    if(this.state.fashionItem.myItem){
+      deletebutton = <a className="button">Delete</a>
+    }
 
     return (
       <div>
