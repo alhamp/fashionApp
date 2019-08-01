@@ -16,45 +16,26 @@ class List extends Component {
     }
 
     componentDidMount(){
+        let path
         if(!this.state.style && !this.state.budget){
-            fetch("/api/v1/fashion")
-            .then(resp => {
-                return resp.json()
-            })
-            .then(body => {
-                this.setState({fashionItems:body.indexItemsDTOS}) 
-            })
+            path = "/api/v1/fashion"
         }
         else if(this.state.budget && this.state.style){
-            let path = "/api/v1/fashion/?budget=" + this.state.budget + '&style=' + this.state.style 
-            fetch(path)
-            .then(resp => {
-                return resp.json()
-            })
-            .then(body => {
-                this.setState({fashionItems:body.indexItemsDTOS}) 
-            })
+            path = "/api/v1/fashion/?budget=" + this.state.budget + '&style=' + this.state.style 
         }
         else if(this.state.budget){
-            let path = "/api/v1/budget/?budget=" + this.state.budget
-            fetch(path)
-            .then(resp => {
-                return resp.json()
-            })
-            .then(body => {
-                this.setState({fashionItems:body.indexItemsDTOS}) 
-            })
+            path = "/api/v1/budget/?budget=" + this.state.budget
         }
         else {
-            let path = "/api/v1/style/?style=" + this.state.style 
-            fetch(path)
-            .then(resp => {
-                return resp.json()
-            })
-            .then(body => {
-                this.setState({fashionItems:body.indexItemsDTOS}) 
-            })
+            path = "/api/v1/style/?style=" + this.state.style
         }
+        fetch(path)
+        .then(resp => {
+            return resp.json()
+        })
+        .then(body => {
+            this.setState({fashionItems:body.indexItemsDTOS}) 
+        })
     }
 
     render() {
