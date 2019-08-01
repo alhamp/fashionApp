@@ -80,11 +80,17 @@ public class FashionItemRestController {
     FashionItem fashionItem = fashionItemRepository.findById(id).orElseThrow(() -> new FashionItemNotFoundException());
     Page<FashionItemReview> fashionItemReviews = fashionItemReviewRepository.findAllByFashionItem(fashionItem, pageable);
     ItemDTO itemDTO = new ItemDTO();
-    org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)authentication.getPrincipal();
-    String username = user.getUsername();
-    com.launchacademy.giantleap.models.User currentUser = userRepository.findByUsername(username);
-    itemDTO.setLoggedIn(currentUser != null);
-    itemDTO.setMyItem(currentUser.getId() == fashionItem.getUser().getId());
+    try {
+      org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
+      String username = user.getUsername();
+      com.launchacademy.giantleap.models.User currentUser = userRepository.findByUsername(username);
+      itemDTO.setLoggedIn(currentUser != null);
+      itemDTO.setMyItem(currentUser.getId() == fashionItem.getUser().getId());
+    }
+    catch (NullPointerException nullPointer){
+      itemDTO.setLoggedIn(false);
+      itemDTO.setMyItem(false);
+    }
     if(fashionItem.getStyle() != null) {
       itemDTO.setStyle(fashionItem.getStyle().getName());
     }
@@ -237,5 +243,10 @@ public class FashionItemRestController {
     FashionItem fashionItem = fashionItemRepository.findById(id).orElseThrow(() -> new FashionItemNotFoundException());
     itemReview.setFashionItem(fashionItem);
     return fashionItemReviewRepository.save(itemReview);
+  }
+
+  @GetMapping("api/v1/delete/{id}")
+  public void deleteItem(@PathVariable Integer id){
+    fashionItemRepository.deleteById(id);
   }
 }

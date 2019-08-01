@@ -7,10 +7,11 @@ class Show extends Component {
     super(props)
     this.state = {
       fashionItem:{},
-      reviews:[],
+      reviews:[]
     }
     this.addNewReview = this.addNewReview.bind(this)
     this.getId = this.getId.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount(){
@@ -51,6 +52,14 @@ class Show extends Component {
       })
   }
 
+  handleDelete(event){
+    fetch("/api/v1/delete/" + this.getId())
+    .catch(error => {
+      console.log(error)
+    })
+    document.location.replace("/list")
+  }
+
   getId(){
     let path = window.location.pathname.split('/')
     let id = path[path.length - 1]
@@ -73,7 +82,7 @@ class Show extends Component {
 
     let deletebutton 
     if(this.state.fashionItem.myItem){
-      deletebutton = <a className="button">Delete</a>
+      deletebutton = <a className="button" onClick={this.handleDelete}>Delete</a>
     }
 
     return (
