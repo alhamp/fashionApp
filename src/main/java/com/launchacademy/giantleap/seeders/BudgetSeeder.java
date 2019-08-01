@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Override
   public void run(String... args) throws Exception {
-  final Integer[] budgets = {5, 15,25, 35, 45, 55, 75, 125, 225, 350};
+  final Integer[] budgets = {25, 50, 100, 200, 300, 400, 500, 600};
   for(Integer budgetOption : budgets){
     if (budgetRepository.findByPrice(budgetOption) == null) {
       Budget budget = new Budget();
