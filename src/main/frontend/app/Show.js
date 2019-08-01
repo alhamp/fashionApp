@@ -7,7 +7,7 @@ class Show extends Component {
     super(props)
     this.state = {
       fashionItem:{},
-      reviews:[]
+      reviews:[],
     }
     this.addNewReview = this.addNewReview.bind(this)
     this.getId = this.getId.bind(this)
@@ -63,6 +63,16 @@ class Show extends Component {
         return <Review key={review.id} review={review}/>
     })
 
+    let addReview
+    if(this.state.fashionItem.loggedIn){
+      addReview = <ReviewContainer addNewReview={this.addNewReview} fashionItem={fashionItem}/>
+    }
+    else {
+      addReview = <p><a>Log in</a> to add a review</p>
+    }
+
+    let deletebutton = <a className="button">Delete</a>
+
     return (
       <div>
         <h1>{fashionItem.name}</h1>
@@ -72,7 +82,8 @@ class Show extends Component {
         <p>Measurements: {fashionItem.measurements}</p>
         <p>Brand: {fashionItem.brand}</p>
         <p>Price: {fashionItem.budget}</p>
-        <ReviewContainer addNewReview={this.addNewReview} fashionItem={fashionItem}/>
+        {deletebutton}
+        {addReview}
         {reviews}
       </div>
     )

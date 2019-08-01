@@ -75,11 +75,16 @@ public class FashionItemRestController {
   }
 
   @GetMapping("/api/v1/fashion/{id}")
-  public ResponseEntity getOneItem(@PathVariable Integer id, @Autowired ItemsAndReviewsDTO itemsAndReviewsDTO, Pageable pageable) {
+  public ResponseEntity getOneItem(@PathVariable Integer id, @Autowired ItemsAndReviewsDTO itemsAndReviewsDTO,
+      Pageable pageable, Authentication authentication) {
     FashionItem fashionItem = fashionItemRepository.findById(id).orElseThrow(() -> new FashionItemNotFoundException());
     Page<FashionItemReview> fashionItemReviews = fashionItemReviewRepository.findAllByFashionItem(fashionItem, pageable);
     ItemDTO itemDTO = new ItemDTO();
-    //how to check if not logged in?
+    org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)authentication.getPrincipal();
+    String username = user.getUsername();
+    com.launchacademy.giantleap.models.User currentUser = userRepository.findByUsername(username);
+    itemDTO.setLoggedIn(currentUser != null);
+    itemDTO.setMyItem(currentUser.getId() == fashionItem.getUser().getId());
     if(fashionItem.getStyle() != null) {
       itemDTO.setStyle(fashionItem.getStyle().getName());
     }
