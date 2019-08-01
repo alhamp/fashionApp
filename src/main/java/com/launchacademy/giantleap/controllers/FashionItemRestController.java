@@ -249,4 +249,74 @@ public class FashionItemRestController {
   public void deleteItem(@PathVariable Integer id){
     fashionItemRepository.deleteById(id);
   }
+
+  @PostMapping("/api/v1/edit/")
+  public FashionItem fashionItemUpdate(@RequestBody ItemDTO itemDTO){
+    FashionItem fashionItem = fashionItemRepository.findById(itemDTO.getId()).orElseThrow(() -> new FashionItemNotFoundException());
+    if(itemDTO.getStyle() != null) {
+      Brand brand;
+      if (brandRepository.findByName((itemDTO.getBrand())) != null) {
+        brand = brandRepository.findByName(itemDTO.getBrand());
+      } else {
+        brand = new Brand();
+        brand.setName(itemDTO.getBrand());
+        brandRepository.save(brand);
+      }
+      fashionItem.setBrand(brand);
+    }
+    if(itemDTO.getName() != null) {
+      fashionItem.setName(itemDTO.getName());
+    }
+    if(itemDTO.getBodyType() != null) {
+      fashionItem.setBodyType(itemDTO.getBodyType());
+    }
+    if(itemDTO.getBudget() != null) {
+      Budget budget;
+      if(budgetRepository.findByPrice(itemDTO.getBudget()) != null){
+        budget = budgetRepository.findByPrice(itemDTO.getBudget());
+        fashionItem.setBudget(budget);
+      } else {
+        budget = new Budget();
+        budget.setPrice(itemDTO.getBudget());
+        budgetRepository.save(budget);
+        fashionItem.setBudget(budget);
+      }
+    }
+    if(itemDTO.getClothingType() != null){
+      ClothingType clothingType;
+      if(clothingTypeRepository.findByName(itemDTO.getClothingType()) != null){
+        clothingType = clothingTypeRepository.findByName(itemDTO.getClothingType());
+      }
+      else{
+        clothingType = new ClothingType();
+        clothingType.setName(itemDTO.getClothingType());
+        clothingTypeRepository.save(clothingType);
+      }
+      fashionItem.setClothingType(clothingType);
+    }
+    if(itemDTO.getItemSize() != null) {
+      fashionItem.setItemSize(itemDTO.getItemSize());
+    }
+    if(itemDTO.getMeasurements() != null) {
+      fashionItem.setMeasurements(itemDTO.getMeasurements());
+    }
+    if(itemDTO.getPhoto() != null) {
+      fashionItem.setPhoto(itemDTO.getPhoto());
+    }
+    if(itemDTO.getQuality() != null) {
+      fashionItem.setQuality(itemDTO.getQuality());
+    }
+    if(itemDTO.getStyle() != null) {
+      Style style;
+      if (styleRepository.findByName(itemDTO.getStyle()) != null) {
+        style = styleRepository.findByName(itemDTO.getStyle());
+      } else {
+        style = new Style();
+        style.setName(itemDTO.getStyle());
+        styleRepository.save(style);
+      }
+      fashionItem.setStyle(style);
+    }
+    return fashionItemRepository.save(fashionItem);
+  }
 }
