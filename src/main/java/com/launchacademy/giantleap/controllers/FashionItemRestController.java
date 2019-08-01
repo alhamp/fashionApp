@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -112,10 +113,50 @@ public class FashionItemRestController {
     return new ResponseEntity<ItemsAndReviewsDTO>(itemsAndReviewsDTO, HttpStatus.OK);
   }
 
-  @GetMapping("api/v1/fashion-query")
-  public Page<FashionItem> getFashionItemsByParams(@PathVariable("budget") Budget budget,
-      @PathVariable("style") Style style, Pageable pageable){
-    return fashionItemRepository.findByBudgetAndStyle(budget, style, pageable);
+  @GetMapping("api/v1/budget/")
+  public ResponseEntity<ListItemsDTO> getFashionItemsByBudget(@RequestParam("budget") Integer budget, Pageable pageable){
+    Budget budgetEntity = budgetRepository.findByPrice(budget);
+    int budgetId = budgetEntity.getId();
+    Page<FashionItem> fashionItems = fashionItemRepository.findByBudget(budgetId, pageable);
+    List<IndexItemsDTO> indexItemsDTOs = new ArrayList<>();
+    for(FashionItem item : fashionItems){
+      IndexItemsDTO indexItemsDTO = new IndexItemsDTO(item);
+      indexItemsDTOs.add(indexItemsDTO);
+    }
+    ListItemsDTO listItemsDTO = new ListItemsDTO();
+    listItemsDTO.setIndexItemsDTOS(indexItemsDTOs);
+    return new ResponseEntity<ListItemsDTO>(listItemsDTO, HttpStatus.OK);
+  }
+  @GetMapping("api/v1/style/")
+  public ResponseEntity<ListItemsDTO> getFashionItemsByStyle(@RequestParam("style") String style, Pageable pageable){
+    Style styleEntity = styleRepository.findByName(style);
+    int styleid = styleEntity.getId();
+    Page<FashionItem> fashionItems = fashionItemRepository.findByStyle(styleid, pageable);
+    List<IndexItemsDTO> indexItemsDTOs = new ArrayList<>();
+    for(FashionItem item : fashionItems){
+      IndexItemsDTO indexItemsDTO = new IndexItemsDTO(item);
+      indexItemsDTOs.add(indexItemsDTO);
+    }
+    ListItemsDTO listItemsDTO = new ListItemsDTO();
+    listItemsDTO.setIndexItemsDTOS(indexItemsDTOs);
+    return new ResponseEntity<ListItemsDTO>(listItemsDTO, HttpStatus.OK);
+  }
+  @GetMapping("api/v1/fashion/")
+  public ResponseEntity<ListItemsDTO> getFashionItemsByParams(@RequestParam("budget") Integer budget,
+      @RequestParam("style") String style, Pageable pageable){
+    Budget budgetEntity = budgetRepository.findByPrice(budget);
+    int budgetId = budgetEntity.getId();
+    Style styleEntity = styleRepository.findByName(style);
+    int styleId = styleEntity.getId();
+    Page<FashionItem> fashionItems = fashionItemRepository.findByBudgetAndStyle(budgetId, styleId, pageable);
+    List<IndexItemsDTO> indexItemsDTOs = new ArrayList<>();
+    for(FashionItem item : fashionItems){
+      IndexItemsDTO indexItemsDTO = new IndexItemsDTO(item);
+      indexItemsDTOs.add(indexItemsDTO);
+    }
+    ListItemsDTO listItemsDTO = new ListItemsDTO();
+    listItemsDTO.setIndexItemsDTOS(indexItemsDTOs);
+    return new ResponseEntity<ListItemsDTO>(listItemsDTO, HttpStatus.OK);
   }
 
   @PostMapping("/api/v1/fashion")

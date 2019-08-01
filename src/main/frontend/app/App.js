@@ -1,5 +1,6 @@
     import React, {Component} from 'react'
     import FashionItemFormContainer from './containers/FashionItemFormContainer'
+    import Navbar from './Navbar';
 
     class App extends Component {
     constructor(props) {
@@ -38,9 +39,14 @@
 
   render(){
     return (
+    <div>
+        <div>
+        <Navbar/>
+        </div>
       <div>
         <h1>Add a new item:</h1>
         <FashionItemFormContainer addNewFashionItem={this.addNewFashionItem} />
+      </div>
       </div>
     )
   }

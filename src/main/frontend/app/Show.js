@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import ReviewContainer from './containers/ReviewContainer'
 import Review from './components/Review'
+import Navbar from './Navbar';
+
 
 class Show extends Component {
   constructor(props){
@@ -64,7 +66,10 @@ class Show extends Component {
     })
 
     return (
-      <div>
+     <div>
+        <div>
+        <Navbar/>
+        </div>
         <h1>{fashionItem.name}</h1>
         <img src={fashionItem.photo} alt={fashionItem.name} width="30%"></img>
         <p>Quality: {fashionItem.quality}</p>
