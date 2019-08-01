@@ -2,10 +2,12 @@
 <html xmlns:th="https://www.thymeleaf.org" th:fragment="layout (template)">
 <head>
   <title>Style Voice</title>
+  <link rel="stylesheet" href="/foundation/css/foundation.min.css">
 </head>
 <body>
-<h1>Style Voice</h1>
+<h1 style="font-family:cursive; color:#E75480; text-align:center">Style Voice</h1>
 <th:block th:include="${template}"/>
 <script src="/bundle.js"></script>
+<script>$(document).Foundation();</script>
 </body>
 </html>
