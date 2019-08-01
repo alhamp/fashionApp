@@ -113,7 +113,7 @@ class Show extends Component {
 
     let addReview
     if(this.state.fashionItem.loggedIn){
-      addReview = <ReviewContainer addNewReview={this.addNewReview} fashionItem={fashionItem}/>
+      addReview =<div><ReviewContainer addNewReview={this.addNewReview} fashionItem={fashionItem}/></div> 
     }
     else {
       addReview = <p><a>Log in</a> to add a review</p>
@@ -129,18 +129,18 @@ class Show extends Component {
     let editform
     if(this.state.fashionItem.myItem && this.state.edit){
       let id = this.getId()
-      editform = <FashionItemFormContainer handleItem={this.editFashionItem} number={id} />
+      editform = <div><FashionItemFormContainer handleItem={this.editFashionItem} number={id} /></div>
     }
 
     return (
       <div>
         <h1>{fashionItem.name}</h1>
-        <img src={fashionItem.photo} alt={fashionItem.name} width="30%"></img>
+        <img src={fashionItem.photo} alt={fashionItem.name} width="100%"></img>
         <p>Quality: {fashionItem.quality}</p>
         <p>Style: {fashionItem.style}</p>
         <p>Measurements: {fashionItem.measurements}</p>
         <p>Brand: {fashionItem.brand}</p>
-        <p>Price: {fashionItem.budget}</p>
+        <p>Budget: {fashionItem.budget}</p>
         {editbutton}
         {editform}
         {deletebutton}
