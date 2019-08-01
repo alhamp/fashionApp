@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import SideBar from './components/SideBar';
 
 
 class List extends Component {
@@ -7,8 +8,6 @@ class List extends Component {
         let params = (new URL(document.location)).searchParams
         let budget = params.get("budget")
         let style = params.get("style")
-        console.log(budget)
-        console.log(style)
         this.state = {
             fashionItems:[],
             budget:budget,
@@ -33,8 +32,7 @@ class List extends Component {
                 return resp.json()
             })
             .then(body => {
-                console.log(body)
-                this.setState({fashionItems:body.content}) 
+                this.setState({fashionItems:body.indexItemsDTOS}) 
             })
         }
         else if(this.state.budget){
@@ -44,8 +42,7 @@ class List extends Component {
                 return resp.json()
             })
             .then(body => {
-                console.log(body)
-                this.setState({fashionItems:body.content}) 
+                this.setState({fashionItems:body.indexItemsDTOS}) 
             })
         }
         else {
@@ -55,8 +52,7 @@ class List extends Component {
                 return resp.json()
             })
             .then(body => {
-                console.log(body)
-                this.setState({fashionItems:body.content}) 
+                this.setState({fashionItems:body.indexItemsDTOS}) 
             })
         }
     }
@@ -65,17 +61,22 @@ class List extends Component {
         let fashionItems = this.state.fashionItems.map(item => {
             let path = "/show/" + item.id
             return (
-            <div key={item.id}>
-                <img src={item.photo} alt={item.name} width="30%"></img>
+            <div key={item.id} className="columns small-3">
+                <img src={item.photo} alt={item.name} width="100%" ></img>
                 <p><a href={path}>{item.name}</a></p>
             </div>)
         })
 
         return (
-            <div>
-                <h2>Find your style:</h2>
-                {fashionItems}
-                <a href="/fashion/new">Add a new item</a>
+            <div className="row">
+                <SideBar/>
+                <div className="columns small-10">
+                    <h2 className="columns small-12 ">Find your style:</h2>
+                    <div className="row">
+                        {fashionItems}
+                    </div>
+                    <a href="/fashion/new" className="button">Add a new item</a>
+                </div>
             </div>
         )
     }

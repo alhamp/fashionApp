@@ -114,26 +114,49 @@ public class FashionItemRestController {
   }
 
   @GetMapping("api/v1/budget/")
-  public Page<FashionItem> getFashionItemsByBudget(@RequestParam("budget") Integer budget, Pageable pageable){
+  public ResponseEntity<ListItemsDTO> getFashionItemsByBudget(@RequestParam("budget") Integer budget, Pageable pageable){
     Budget budgetEntity = budgetRepository.findByPrice(budget);
     int budgetId = budgetEntity.getId();
-    return fashionItemRepository.findByBudget(budgetId, pageable);
+    Page<FashionItem> fashionItems = fashionItemRepository.findByBudget(budgetId, pageable);
+    List<IndexItemsDTO> indexItemsDTOs = new ArrayList<>();
+    for(FashionItem item : fashionItems){
+      IndexItemsDTO indexItemsDTO = new IndexItemsDTO(item);
+      indexItemsDTOs.add(indexItemsDTO);
+    }
+    ListItemsDTO listItemsDTO = new ListItemsDTO();
+    listItemsDTO.setIndexItemsDTOS(indexItemsDTOs);
+    return new ResponseEntity<ListItemsDTO>(listItemsDTO, HttpStatus.OK);
   }
   @GetMapping("api/v1/style/")
-  public Page<FashionItem> getFashionItemsByStyle(@RequestParam("style") String style, Pageable pageable){
+  public ResponseEntity<ListItemsDTO> getFashionItemsByStyle(@RequestParam("style") String style, Pageable pageable){
     Style styleEntity = styleRepository.findByName(style);
     int styleid = styleEntity.getId();
-    return fashionItemRepository.findByStyle(styleid, pageable);
+    Page<FashionItem> fashionItems = fashionItemRepository.findByStyle(styleid, pageable);
+    List<IndexItemsDTO> indexItemsDTOs = new ArrayList<>();
+    for(FashionItem item : fashionItems){
+      IndexItemsDTO indexItemsDTO = new IndexItemsDTO(item);
+      indexItemsDTOs.add(indexItemsDTO);
+    }
+    ListItemsDTO listItemsDTO = new ListItemsDTO();
+    listItemsDTO.setIndexItemsDTOS(indexItemsDTOs);
+    return new ResponseEntity<ListItemsDTO>(listItemsDTO, HttpStatus.OK);
   }
   @GetMapping("api/v1/fashion/")
-  public Page<FashionItem> getFashionItemsByParams(@RequestParam("budget") Integer budget,
+  public ResponseEntity<ListItemsDTO> getFashionItemsByParams(@RequestParam("budget") Integer budget,
       @RequestParam("style") String style, Pageable pageable){
     Budget budgetEntity = budgetRepository.findByPrice(budget);
     int budgetId = budgetEntity.getId();
     Style styleEntity = styleRepository.findByName(style);
     int styleId = styleEntity.getId();
-    Page<FashionItem> page = fashionItemRepository.findByBudgetAndStyle(budgetId, styleId, pageable);
-    return page;
+    Page<FashionItem> fashionItems = fashionItemRepository.findByBudgetAndStyle(budgetId, styleId, pageable);
+    List<IndexItemsDTO> indexItemsDTOs = new ArrayList<>();
+    for(FashionItem item : fashionItems){
+      IndexItemsDTO indexItemsDTO = new IndexItemsDTO(item);
+      indexItemsDTOs.add(indexItemsDTO);
+    }
+    ListItemsDTO listItemsDTO = new ListItemsDTO();
+    listItemsDTO.setIndexItemsDTOS(indexItemsDTOs);
+    return new ResponseEntity<ListItemsDTO>(listItemsDTO, HttpStatus.OK);
   }
 
   @PostMapping("/api/v1/fashion")

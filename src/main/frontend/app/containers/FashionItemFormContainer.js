@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import TextField from '../components/TextField'
 import SelectField from '../components/SelectField'
-import TextArea from '../components/TextArea'
-import NumberField from '../components/NumberField'
 
 const stylesArray =['formal-office','business-casual','casual-chic','sports-wear',
         'evening-black-tie','party/wedding','pool-party','vocation','maternity','streetWear',
         'cowGirl','hip-hop','rocker-chick','military']
 
-const clothingTypeArray = ['Tops','jackets','blazers', 'coats','dresses',
+const clothingTypeArray = ['tops','jackets','blazers', 'coats','dresses',
         'jumpsuits','knitwear','shirts|blouses','t-shirts','pants','jeans','shorts',
         'skirts','swimwear']
 
