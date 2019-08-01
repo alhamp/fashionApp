@@ -1,6 +1,8 @@
 package com.launchacademy.giantleap.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +20,6 @@ public class FashionItemReview {
     @Column(name="id", nullable=false, unique=true)
     private Integer id;
 
-    @JsonIgnore
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="user_id")
     private User user;
@@ -47,16 +48,16 @@ public class FashionItemReview {
 
     @Override
     public String toString() {
-        return "FashionItemReview{" +
-            "id=" + id +
-            ", user=" + user +
-            ", fashionItem=" + fashionItem +
-            ", bodyType='" + bodyType + '\'' +
-            ", itemSize=" + itemSize +
-            ", quality=" + quality +
-            ", comment='" + comment + '\'' +
-            ", photo='" + photo + '\'' +
-            ", rating=" + rating +
-            '}';
+    return "FashionItemReview{" +
+    "id=" + id +
+    ", user=" + user +
+    ", fashionItem=" + fashionItem +
+    ", bodyType='" + bodyType + '\'' +
+    ", itemSize=" + itemSize +
+    ", quality=" + quality +
+    ", comment='" + comment + '\'' +
+    ", photo='" + photo + '\'' +
+    ", rating=" + rating +
+    '}';
     }
 }

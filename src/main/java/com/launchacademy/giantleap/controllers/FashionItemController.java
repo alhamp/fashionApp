@@ -19,4 +19,5 @@ public class FashionItemController {
     public String show() {
       return "fashion/show";
     }
+    public String show() { return "fashion/show"; }
 }
