@@ -8,8 +8,8 @@ import HomePage from './HomePage'
 const pageMap = {
   "list": List,
   "show": Show,
-  "app":App,
-  "homePage": HomePage
+  "homePage": HomePage,
+  "app":App
 }
 
 for(const domId in pageMap) {
