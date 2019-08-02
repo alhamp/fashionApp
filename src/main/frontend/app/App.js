@@ -1,11 +1,6 @@
-<<<<<<< HEAD
     import React, {Component} from 'react'
     import FashionItemFormContainer from './containers/FashionItemFormContainer'
     import Navbar from './Navbar';
-=======
-import React, {Component} from 'react'
-import FashionItemFormContainer from './containers/FashionItemFormContainer'
->>>>>>> 3b79dbfcfe9538e6058d166a2c695272d2ac5da0
 
 class App extends Component {
   constructor(props) {
@@ -51,11 +46,7 @@ class App extends Component {
         <Navbar/>
         </div>
       <div>
-<<<<<<< HEAD
-        <FashionItemFormContainer addNewFashionItem={this.addNewFashionItem} />
-=======
         <FashionItemFormContainer handleItem={this.addNewFashionItem} number="0"/>
->>>>>>> 3b79dbfcfe9538e6058d166a2c695272d2ac5da0
       </div>
       </div>
     )

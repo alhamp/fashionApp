@@ -1,12 +1,8 @@
 import React, {Component} from 'react'
 import ReviewContainer from './containers/ReviewContainer'
 import Review from './components/Review'
-<<<<<<< HEAD
 import Navbar from './Navbar';
 
-=======
-import FashionItemFormContainer from './containers/FashionItemFormContainer'
->>>>>>> 3b79dbfcfe9538e6058d166a2c695272d2ac5da0
 
 class Show extends Component {
   constructor(props){
