@@ -130,7 +130,7 @@ class Show extends Component {
     let editform
     if(this.state.fashionItem.myItem && this.state.edit){
       let id = this.getId()
-      editform = <div><FashionItemFormContainer handleItem={this.editFashionItem} number={id} /></div>
+      editform = <FashionItemFormContainer handleItem={this.editFashionItem} number={id} />
     }
 
     return (
@@ -149,12 +149,25 @@ class Show extends Component {
           <p>Price: {fashionItem.budget}</p>
           </div>
         </div>
+
         <div className="row">
-        <div>
-        {deletebutton}
-        <div>
-        {addReview}
-        {reviews}
+        <div className="row">
+          <div className="small-6 columns">
+          {editbutton}
+          </div>
+          <div className="small-12 columns">
+          {editform}
+          </div>
+          <div className="small-6 columns">
+          {deletebutton}
+          </div>
+        </div>
+        <div className="row callout">
+          <div className="small-12 columns">
+          {addReview}
+          </div>
+          {reviews}
+        </div>
         </div>
       </div>
     )
