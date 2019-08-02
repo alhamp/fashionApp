@@ -44,7 +44,6 @@
         <Navbar/>
         </div>
       <div>
-        <h1>Add a new item:</h1>
         <FashionItemFormContainer addNewFashionItem={this.addNewFashionItem} />
       </div>
       </div>

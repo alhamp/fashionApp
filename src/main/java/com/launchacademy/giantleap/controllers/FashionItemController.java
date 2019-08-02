@@ -19,6 +19,10 @@ public class FashionItemController {
       return "fashion/list";
     }
 
+    @GetMapping("/about")
+    public String about() { return "fashion/about"; }
+
+
     @GetMapping("/show/{id}")
     public String show() { return "fashion/show"; }
 }

@@ -1,35 +1,32 @@
 import React, { Component } from 'react';
-import Navbar from './Navbar';
+import Navbar from'./Navbar'
 
 class HomePage extends Component {
 
     render() {
         return (
-     <div>
+        <div>
         <div>
         <Navbar/>
         </div>
-            <div className="grid-container">
-                 <h3>Join our community to find the style that will fit any occasion as well as your needs!</h3>
-            </div>
-            <div className="grid-x grid-padding-x">
-                <div className="large-4 cell medium-4 columns primary callout">
+            <div className= "row">
+                <div className="large-6 medium-6 columns primary callout">
                         <div className="style">
-                            <a href="/style">
+                            <a href="list?style=">
                               <img src='/images/shopbystyle.jpg' alt="Search by Style" width="100%"></img>
                             </a>
                 </div>
             </div>
             <div className="large-6 medium-6 columns primary callout">
                     <div className="">
-                        <a href="/list?budget=100">
+                        <a href="/list?budget=">
                             <img src='/images/budget.jpg' alt="Browse By Budget" witdh="100%"></img>
                         </a>
                     </div>
                  </div>
                 <div className="large-6 medium-6 columns primary callout">
                     <div className="size">
-                        <a href="/size">
+                        <a href="list?style=">
                         <img src='/images/size.jpg' alt="Add Your Size" witdh="100%"></img>
                         </a>
                     </div>
@@ -43,7 +40,7 @@ class HomePage extends Component {
                 </div>
                 <div className="large-6 medium-6 columns primary callout">
                     <div className="summerTrends">
-                        <a href="/summerTrends">
+                        <a href="/list?style=pull-party">
                             <img src='/images/summer.jpg' alt="Seek Summer Chic"></img>
                         </a>
                     </div>
@@ -57,7 +54,6 @@ class HomePage extends Component {
             </div>
             </div>
             </div>
-           
         )
     }
 }
