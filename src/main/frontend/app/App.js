@@ -1,5 +1,6 @@
-import React, {Component} from 'react'
-import FashionItemFormContainer from './containers/FashionItemFormContainer'
+    import React, {Component} from 'react'
+    import FashionItemFormContainer from './containers/FashionItemFormContainer'
+    import Navbar from './Navbar';
 
 class App extends Component {
   constructor(props) {
@@ -40,8 +41,13 @@ class App extends Component {
 
   render(){
     return (
+    <div>
+        <div>
+        <Navbar/>
+        </div>
       <div>
         <FashionItemFormContainer handleItem={this.addNewFashionItem} number="0"/>
+      </div>
       </div>
     )
   }

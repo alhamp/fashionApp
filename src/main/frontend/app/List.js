@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SideBar from './components/SideBar';
+import Navbar from './Navbar';
 
 
 class List extends Component {
@@ -49,6 +50,10 @@ class List extends Component {
         })
 
         return (
+         <div>
+                <div>
+                <Navbar/>
+                </div>
             <div className="row">
                 <SideBar/>
                 <div className="columns small-10">
@@ -59,6 +64,7 @@ class List extends Component {
                     <a href="/fashion/new" className="button">Add a new item</a>
                 </div>
             </div>
+          </div>
         )
     }
 }
