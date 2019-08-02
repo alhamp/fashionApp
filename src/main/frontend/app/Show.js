@@ -2,11 +2,7 @@ import React, {Component} from 'react'
 import ReviewContainer from './containers/ReviewContainer'
 import Review from './components/Review'
 import Navbar from './Navbar';
-<<<<<<< HEAD
 import FashionItemFormContainer from './containers/FashionItemFormContainer'
-=======
-
->>>>>>> 5444a3711d425602e71fcbcb99b51eb22288b9d6
 
 class Show extends Component {
   constructor(props){
@@ -142,35 +138,37 @@ class Show extends Component {
         <div className="extradivpadding">
         <Navbar/>
         </div>
-        <h1>{fashionItem.name}</h1>
-        <div className="row">
-        <img className="columns small-4" src={fashionItem.photo} alt={fashionItem.name} width="100%"></img>
-          <div className="columns small-6">
-            <p>Quality: {fashionItem.quality}</p>
-            <p>Style: {fashionItem.style}</p>
-            <p>Measurements: {fashionItem.measurements}</p>
-            <p>Brand: {fashionItem.brand}</p>
-            <p>Price: {fashionItem.budget}</p>
+        <div>
+          <h2>{fashionItem.name}</h2>
+          <div className="row">
+          <img className="columns small-4" src={fashionItem.photo} alt={fashionItem.name} width="100%"></img>
+            <div className="columns small-6">
+              <p>Quality: {fashionItem.quality}</p>
+              <p>Style: {fashionItem.style}</p>
+              <p>Measurements: {fashionItem.measurements}</p>
+              <p>Brand: {fashionItem.brand}</p>
+              <p>Price: {fashionItem.budget}</p>
+            </div>
           </div>
-        </div>
 
-        <div className="row">
-          <div className="small-6 columns">
-          {editbutton}
+          <div className="row">
+            <div className="small-6 columns">
+            {editbutton}
+            </div>
+            <div className="small-12 columns">
+            {editform}
+            </div>
+            <div className="small-6 columns">
+            {deletebutton}
+            </div>
           </div>
-          <div className="small-12 columns">
-          {editform}
+          
+          <div className="row">
+            <div className="small-12 columns">
+            {addReview}
+            </div>
+            {reviews}
           </div>
-          <div className="small-6 columns">
-          {deletebutton}
-          </div>
-        </div>
-        
-        <div className="row">
-          <div className="small-12 columns">
-          {addReview}
-          </div>
-          {reviews}
         </div>
       </div>
     )

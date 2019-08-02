@@ -41,13 +41,13 @@ class App extends Component {
 
   render(){
     return (
-    <div className="row">
+      <div className="row">
         <div >
-        <Navbar/>
+          <Navbar/>
         </div>
-      <div >
-        <FashionItemFormContainer handleItem={this.addNewFashionItem} number="0"/>
-      </div>
+        <div className="columns small-12">
+          <FashionItemFormContainer handleItem={this.addNewFashionItem} number="0"/>
+        </div>
       </div>
     )
   }
