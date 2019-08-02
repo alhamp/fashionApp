@@ -253,7 +253,7 @@ public class FashionItemRestController {
   @PostMapping("/api/v1/edit/")
   public FashionItem fashionItemUpdate(@RequestBody ItemDTO itemDTO){
     FashionItem fashionItem = fashionItemRepository.findById(itemDTO.getId()).orElseThrow(() -> new FashionItemNotFoundException());
-    if(itemDTO.getStyle() != null) {
+    if(itemDTO.getStyle() != null && !itemDTO.getStyle().isBlank()) {
       Brand brand;
       if (brandRepository.findByName((itemDTO.getBrand())) != null) {
         brand = brandRepository.findByName(itemDTO.getBrand());
@@ -264,10 +264,10 @@ public class FashionItemRestController {
       }
       fashionItem.setBrand(brand);
     }
-    if(itemDTO.getName() != null) {
+    if(itemDTO.getName() != null && !itemDTO.getName().isBlank()) {
       fashionItem.setName(itemDTO.getName());
     }
-    if(itemDTO.getBodyType() != null) {
+    if(itemDTO.getBodyType() != null && !itemDTO.getBodyType().isBlank()) {
       fashionItem.setBodyType(itemDTO.getBodyType());
     }
     if(itemDTO.getBudget() != null) {
@@ -282,7 +282,7 @@ public class FashionItemRestController {
         fashionItem.setBudget(budget);
       }
     }
-    if(itemDTO.getClothingType() != null){
+    if(itemDTO.getClothingType() != null && !itemDTO.getClothingType().isBlank()){
       ClothingType clothingType;
       if(clothingTypeRepository.findByName(itemDTO.getClothingType()) != null){
         clothingType = clothingTypeRepository.findByName(itemDTO.getClothingType());
@@ -297,10 +297,10 @@ public class FashionItemRestController {
     if(itemDTO.getItemSize() != null) {
       fashionItem.setItemSize(itemDTO.getItemSize());
     }
-    if(itemDTO.getMeasurements() != null) {
+    if(itemDTO.getMeasurements() != null && !itemDTO.getMeasurements().isBlank()) {
       fashionItem.setMeasurements(itemDTO.getMeasurements());
     }
-    if(itemDTO.getPhoto() != null) {
+    if(itemDTO.getPhoto() != null && !itemDTO.getPhoto().isBlank()) {
       fashionItem.setPhoto(itemDTO.getPhoto());
     }
     if(itemDTO.getQuality() != null) {
