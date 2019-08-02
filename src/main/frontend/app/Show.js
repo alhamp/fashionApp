@@ -13,6 +13,7 @@ class Show extends Component {
     }
     this.addNewReview = this.addNewReview.bind(this)
     this.getId = this.getId.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount(){
@@ -53,6 +54,14 @@ class Show extends Component {
       })
   }
 
+  handleDelete(event){
+    fetch("/api/v1/delete/" + this.getId())
+    .catch(error => {
+      console.log(error)
+    })
+    document.location.replace("/list")
+  }
+
   getId(){
     let path = window.location.pathname.split('/')
     let id = path[path.length - 1]
@@ -64,6 +73,19 @@ class Show extends Component {
     let reviews = this.state.reviews.map(review => {
         return <Review key={review.id} review={review}/>
     })
+
+    let addReview
+    if(this.state.fashionItem.loggedIn){
+      addReview = <ReviewContainer addNewReview={this.addNewReview} fashionItem={fashionItem}/>
+    }
+    else {
+      addReview = <p><a>Log in</a> to add a review</p>
+    }
+
+    let deletebutton 
+    if(this.state.fashionItem.myItem){
+      deletebutton = <a className="button" onClick={this.handleDelete}>Delete</a>
+    }
 
     return (
      <div>
@@ -77,7 +99,8 @@ class Show extends Component {
         <p>Measurements: {fashionItem.measurements}</p>
         <p>Brand: {fashionItem.brand}</p>
         <p>Price: {fashionItem.budget}</p>
-        <ReviewContainer addNewReview={this.addNewReview} fashionItem={fashionItem}/>
+        {deletebutton}
+        {addReview}
         {reviews}
       </div>
     )
