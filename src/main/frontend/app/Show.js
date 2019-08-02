@@ -135,22 +135,21 @@ class Show extends Component {
 
     return (
      <div className="row">
-        <div>
+        <div className="extradivpadding">
         <Navbar/>
         </div>
         <h1>{fashionItem.name}</h1>
         <div className="row">
         <img className="columns small-4" src={fashionItem.photo} alt={fashionItem.name} width="100%"></img>
           <div className="columns small-6">
-          <p>Quality: {fashionItem.quality}</p>
-          <p>Style: {fashionItem.style}</p>
-          <p>Measurements: {fashionItem.measurements}</p>
-          <p>Brand: {fashionItem.brand}</p>
-          <p>Price: {fashionItem.budget}</p>
+            <p>Quality: {fashionItem.quality}</p>
+            <p>Style: {fashionItem.style}</p>
+            <p>Measurements: {fashionItem.measurements}</p>
+            <p>Brand: {fashionItem.brand}</p>
+            <p>Price: {fashionItem.budget}</p>
           </div>
         </div>
 
-        <div className="row">
         <div className="row">
           <div className="small-6 columns">
           {editbutton}
@@ -162,12 +161,12 @@ class Show extends Component {
           {deletebutton}
           </div>
         </div>
-        <div className="row callout">
+        
+        <div className="row">
           <div className="small-12 columns">
           {addReview}
           </div>
           {reviews}
-        </div>
         </div>
       </div>
     )

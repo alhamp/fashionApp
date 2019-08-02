@@ -41,11 +41,11 @@ class App extends Component {
 
   render(){
     return (
-    <div>
-        <div>
+    <div className="row">
+        <div >
         <Navbar/>
         </div>
-      <div>
+      <div >
         <FashionItemFormContainer handleItem={this.addNewFashionItem} number="0"/>
       </div>
       </div>

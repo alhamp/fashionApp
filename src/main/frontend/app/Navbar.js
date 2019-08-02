@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class Navbar extends Component {
 render() {
 return (
-<div className="breadcrumbs">
-<nav data-topbar role="navigation">
+<div className="breadcrumbs row">
+<nav className="columns small-8" data-topbar role="navigation">
  <ul className="breadcrumbs">
    <li><a href="/">Home Page</a></li>
    <li><a href="/fashion/new">Share Your Style</a></li>
