@@ -102,7 +102,7 @@ render() {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <h2>Add Your Fashion Item:</h2>
+                <h4>Add Your Fashion Item:</h4>
                 <TextField
                     label="Fashion Item Name"
                     name="name"

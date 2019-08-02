@@ -4,12 +4,14 @@ import List from './List'
 import Show from './Show'
 import App from './App'
 import HomePage from './HomePage'
+import About from './About'
 
 const pageMap = {
   "list": List,
   "show": Show,
   "homepage": HomePage,
-  "app":App
+  "app":App,
+  "about":About
 }
 
 for(const domId in pageMap) {

@@ -2,7 +2,11 @@ import React, {Component} from 'react'
 import ReviewContainer from './containers/ReviewContainer'
 import Review from './components/Review'
 import Navbar from './Navbar';
+<<<<<<< HEAD
 import FashionItemFormContainer from './containers/FashionItemFormContainer'
+=======
+
+>>>>>>> 5444a3711d425602e71fcbcb99b51eb22288b9d6
 
 class Show extends Component {
   constructor(props){
