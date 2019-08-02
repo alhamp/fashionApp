@@ -79,7 +79,7 @@ class Show extends Component {
       addReview = <ReviewContainer addNewReview={this.addNewReview} fashionItem={fashionItem}/>
     }
     else {
-      addReview = <p><a>Log in</a> to add a review</p>
+      addReview = <p><a href="/login">Log in</a> to add a review</p>
     }
 
     let deletebutton 
@@ -88,20 +88,28 @@ class Show extends Component {
     }
 
     return (
-     <div>
+     <div className="row">
         <div>
         <Navbar/>
         </div>
         <h1>{fashionItem.name}</h1>
-        <img src={fashionItem.photo} alt={fashionItem.name} width="30%"></img>
-        <p>Quality: {fashionItem.quality}</p>
-        <p>Style: {fashionItem.style}</p>
-        <p>Measurements: {fashionItem.measurements}</p>
-        <p>Brand: {fashionItem.brand}</p>
-        <p>Price: {fashionItem.budget}</p>
+        <div className="row">
+        <img className="columns small-4" src={fashionItem.photo} alt={fashionItem.name} width="100%"></img>
+          <div className="columns small-6">
+          <p>Quality: {fashionItem.quality}</p>
+          <p>Style: {fashionItem.style}</p>
+          <p>Measurements: {fashionItem.measurements}</p>
+          <p>Brand: {fashionItem.brand}</p>
+          <p>Price: {fashionItem.budget}</p>
+          </div>
+        </div>
+        <div className="row">
+        <div>
         {deletebutton}
+        <div>
         {addReview}
         {reviews}
+        </div>
       </div>
     )
   }

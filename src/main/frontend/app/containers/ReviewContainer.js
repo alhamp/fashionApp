@@ -60,7 +60,7 @@ class ReviewContainer extends Component {
         }
         
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className="columns small-12">
                 <h2>Add a review:</h2>
                 <SelectField
                     label="Overall Rating"
