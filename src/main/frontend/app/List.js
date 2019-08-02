@@ -50,18 +50,16 @@ class List extends Component {
         })
 
         return (
-         <div>
+            <div>
                 <div>
                 <Navbar/>
                 </div>
             <div className="row">
                 <SideBar/>
                 <div className="columns small-10">
-                    <h2 className="columns small-12 ">Find your style:</h2>
                     <div className="row">
                         {fashionItems}
                     </div>
-                    <a href="/fashion/new" className="button">Add a new item</a>
                 </div>
             </div>
           </div>

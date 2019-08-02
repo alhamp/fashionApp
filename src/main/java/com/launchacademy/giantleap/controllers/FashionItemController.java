@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class FashionItemController {
     @GetMapping("/")
     public String index() {
-      return "fashion/homePage";
+      return "fashion/homepage";
     }
 
     @GetMapping("/list")

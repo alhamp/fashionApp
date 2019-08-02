@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import ReviewContainer from './containers/ReviewContainer'
 import Review from './components/Review'
 import Navbar from './Navbar';
-
+import FashionItemFormContainer from './containers/FashionItemFormContainer'
 
 class Show extends Component {
   constructor(props){
@@ -117,7 +117,7 @@ class Show extends Component {
       addReview =<div><ReviewContainer addNewReview={this.addNewReview} fashionItem={fashionItem}/></div> 
     }
     else {
-      addReview = <p><a>Log in</a> to add a review</p>
+      addReview = <p><a href="/login">Log in</a> to add a review</p>
     }
 
     let deletebutton 
@@ -130,26 +130,46 @@ class Show extends Component {
     let editform
     if(this.state.fashionItem.myItem && this.state.edit){
       let id = this.getId()
-      editform = <div><FashionItemFormContainer handleItem={this.editFashionItem} number={id} /></div>
+      editform = <FashionItemFormContainer handleItem={this.editFashionItem} number={id} />
     }
 
     return (
-     <div>
-        <div>
+     <div className="row">
+        <div className="extradivpadding">
         <Navbar/>
         </div>
-        <h1>{fashionItem.name}</h1>
-        <img src={fashionItem.photo} alt={fashionItem.name} width="100%"></img>
-        <p>Quality: {fashionItem.quality}</p>
-        <p>Style: {fashionItem.style}</p>
-        <p>Measurements: {fashionItem.measurements}</p>
-        <p>Brand: {fashionItem.brand}</p>
-        <p>Budget: {fashionItem.budget}</p>
-        {editbutton}
-        {editform}
-        {deletebutton}
-        {addReview}
-        {reviews}
+        <div>
+          <h2>{fashionItem.name}</h2>
+          <div className="row">
+          <img className="columns small-4" src={fashionItem.photo} alt={fashionItem.name} width="100%"></img>
+            <div className="columns small-6">
+              <p>Quality: {fashionItem.quality}</p>
+              <p>Style: {fashionItem.style}</p>
+              <p>Measurements: {fashionItem.measurements}</p>
+              <p>Brand: {fashionItem.brand}</p>
+              <p>Price: {fashionItem.budget}</p>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="small-6 columns">
+            {editbutton}
+            </div>
+            <div className="small-12 columns">
+            {editform}
+            </div>
+            <div className="small-6 columns">
+            {deletebutton}
+            </div>
+          </div>
+          
+          <div className="row">
+            <div className="small-12 columns">
+            {addReview}
+            </div>
+            {reviews}
+          </div>
+        </div>
       </div>
     )
   }

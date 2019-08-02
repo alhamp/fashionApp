@@ -3,7 +3,7 @@ import TextField from '../components/TextField'
 import SelectField from '../components/SelectField'
 import TextArea from '../components/TextArea'
 
-const bodyTypeArray = ['straight','pear','oval', 'diamond']
+const bodyTypeArray = ['straight-body','pear-body','oval-body', 'diamond-body','hourglass-body','top-hourglass-body','inverted-triangle-body']
 const sizeArray = ['US 0', 'US 2', 'US 4', 'US 8', 'US 10', 'US 12', 'US 14', 'US 16', 'US 18', 'US 20']
 
 class ReviewContainer extends Component {
@@ -60,8 +60,8 @@ class ReviewContainer extends Component {
         }
         
         return (
-            <form onSubmit={this.handleSubmit}>
-                <h2>Add a review:</h2>
+            <form onSubmit={this.handleSubmit} className="columns small-12">
+                <h4>Add a review</h4>
                 <SelectField
                     label="Overall Rating"
                     name="rating"

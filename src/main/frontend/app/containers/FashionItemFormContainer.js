@@ -10,7 +10,7 @@ const clothingTypeArray = ['tops','jackets','blazers', 'coats','dresses',
         'jumpsuits','knitwear','shirts|blouses','t-shirts','pants','jeans','shorts',
         'skirts','swimwear']
 
-const bodyTypeArray = ['straight-body','pear-body','oval-body', 'diamond-body','hourglass-body','top-hourglass-body','inverted-triangle-body',]
+const bodyTypeArray = ['straight-body','pear-body','oval-body', 'diamond-body','hourglass-body','top-hourglass-body','inverted-triangle-body']
 
 const sizeArray = ['US 0', 'US 2', 'US 4', 'US 8', 'US 10', 'US 12', 'US 14', 'US 16', 'US 18', 'US 20']
 
@@ -102,7 +102,7 @@ render() {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <h4>Add Your Fashion Item:</h4>
+                <h4>Add Your Fashion Item</h4>
                 <TextField
                     label="Fashion Item Name"
                     name="name"

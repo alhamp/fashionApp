@@ -32,6 +32,7 @@ import React from 'react'
                 <li><a href={window.location.pathname + "?style=rocker-chick"}>rocker-chick</a></li>
                 <li><a href={window.location.pathname + "?style=military"}>military</a></li>
             </ul>
+            <a href="/fashion/new" className="button">Add a new item</a>
         </div>
     )
  }
