@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 @ToString
 public class ItemDTO {
   private boolean loggedIn;
+  private boolean myItem;
   private Integer id;
   private String name;
   private String photo;

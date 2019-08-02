@@ -20,4 +20,3 @@ for(const domId in pageMap) {
     ReactDom.render(<Component />,document.getElementById(domId))
   }
 }
-

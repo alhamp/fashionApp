@@ -30,8 +30,7 @@ constructor(props){
         quality:'',
         itemSize:'',
         photo:'',
-        budget:'',
-        comment:''
+        budget:''
     };
     this.handleSubmit = this.handleSubmit.bind(this)
     this.clearForm = this.clearForm.bind(this)
@@ -44,20 +43,21 @@ handleChange(event) {
 
 handleSubmit(event) {
     event.preventDefault()
-    let item = {name:this.state.name,
-        clothingType:this.state.clothingType,
-        bodyType:this.state.bodyType,
-        measurements:this.state.measurements,
-        style:this.state.style,
-        brand:this.state.brand,
-        fabricWeight:this.state.fabricWeight,
-        quality:this.state.quality,
-        itemSize:this.state.itemSize,
-        photo:this.state.photo,
-        budget:this.state.budget,
-        comment:this.state.comment
+    let item = {
+        id:this.props.number,
+        name:this.state.name.trim(),
+        clothingType:this.state.clothingType.trim(),
+        bodyType:this.state.bodyType.trim(),
+        measurements:this.state.measurements.trim(),
+        style:this.state.style.trim(),
+        brand:this.state.brand.trim(),
+        fabricWeight:this.state.fabricWeight.trim(),
+        quality:this.state.quality.trim(),
+        itemSize:this.state.itemSize.trim(),
+        photo:this.state.photo.trim(),
+        budget:this.state.budget.trim(),
     }
-    this.props.addNewFashionItem(item)
+    this.props.handleItem(item)
     this.clearForm()
 }
 
@@ -74,7 +74,6 @@ clearForm(){
         itemSize:'',
         photo:'',
         budget:'',
-        comment:''
     })
 }
 render() {
